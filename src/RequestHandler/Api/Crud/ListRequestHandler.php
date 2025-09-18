@@ -23,7 +23,7 @@ final class ListRequestHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $collectionRequest = $this->parsing->getCollectionRequestSchema($request)->parse($request);
+        $collectionRequest = $this->parsing->getCollectionRequestSchema($request)->parse($request->getQueryParams());
         $collection = $collectionRequest->toCollection();
 
         $this->repository->resolveCollection($collection);

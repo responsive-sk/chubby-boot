@@ -146,11 +146,7 @@ return [
             ArticleParsing::class => ArticleParsingFactory::class,
             PetRepository::class => PetRepositoryFactory::class,
             ArticleRepository::class => ArticleRepositoryFactory::class,
-            CreateRequestHandler::class => \App\RequestHandler\Api\Crud\CreateRequestHandler::class,
-            DeleteRequestHandler::class => \App\RequestHandler\Api\Crud\DeleteRequestHandler::class,
-            ListRequestHandler::class => \App\RequestHandler\Api\Crud\ListRequestHandler::class,
-            ReadRequestHandler::class => \App\RequestHandler\Api\Crud\ReadRequestHandler::class,
-            UpdateRequestHandler::class => \App\RequestHandler\Api\Crud\UpdateRequestHandler::class,
+
             PingRequestHandler::class => PingRequestHandlerFactory::class,
             ResponseFactoryInterface::class => ResponseFactoryFactory::class,
             RouteMatcherInterface::class => RouteMatcherFactory::class,
@@ -176,7 +172,7 @@ return [
         'dbal' => [
             'connection' => [
                 'driver' => 'pdo_sqlite',
-                'path' => $rootDir . '/var/articlestore.db',
+                'path' => $rootDir . '/database/database.sqlite',
             ],
         ],
         'driver' => [

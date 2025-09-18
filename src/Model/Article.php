@@ -6,7 +6,7 @@ namespace App\Model;
 
 use Ramsey\Uuid\Uuid;
 
-class Article
+final class Article implements ModelInterface
 {
     private string $id;
 
@@ -99,5 +99,31 @@ class Article
     public function setCategory(?Category $category): void
     {
         $this->category = $category;
+    }
+
+    /**
+     * @return array{
+     *  id: string,
+     *  createdAt: \DateTimeImmutable,
+     *  updatedAt: null|\DateTimeImmutable,
+     *  title: string,
+     *  content: string,
+     *  tag: null|string,
+     *  image: null|string,
+     *  category: null|array{id: string, name: string}
+     * }
+     */
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'createdAt' => $this->createdAt,
+            'updatedAt' => $this->updatedAt,
+            'title' => $this->title,
+            'content' => $this->content,
+            'tag' => $this->tag,
+            'image' => $this->image,
+            'category' => $this->category ? $this->category->jsonSerialize() : null,
+        ];
     }
 }

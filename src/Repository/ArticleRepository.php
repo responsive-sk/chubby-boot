@@ -60,7 +60,7 @@ final class ArticleRepository implements RepositoryInterface
         $articleCollection->setItems($itemsQueryBuilder->getQuery()->getResult());
     }
 
-    public function findById(string $id): ?Article
+    public function findById(string $id): ?ModelInterface
     {
         return $this->entityManager->find(Article::class, $id);
     }

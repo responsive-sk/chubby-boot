@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Ramsey\Uuid\Uuid;
 
-class Category
+final class Category implements ModelInterface
 {
     private string $id;
 
@@ -98,5 +98,25 @@ class Category
             $this->articles->removeElement($article);
             $article->setCategory(null);
         }
+    }
+
+    /**
+     * @return array{
+     *  id: string,
+     *  createdAt: \DateTimeImmutable,
+     *  updatedAt: null|\DateTimeImmutable,
+     *  name: string,
+     *  image: null|string
+     * }
+     */
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'createdAt' => $this->createdAt,
+            'updatedAt' => $this->updatedAt,
+            'name' => $this->name,
+            'image' => $this->image,
+        ];
     }
 }

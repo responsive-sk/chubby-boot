@@ -13,4 +13,8 @@ $config['doctrine']['cache'] = ['array' => []];
 $config['fastroute']['cache'] = null;
 $config['monolog']['level'] = Level::Notice;
 
+// Ensure ArticleParsing factory is included
+$config['dependencies']['factories']['App\\Parsing\\ArticleParsing'] = 'App\\ServiceFactory\\Parsing\\ArticleParsingFactory';
+$config['dependencies']['factories']['App\\Repository\\ArticleRepository'] = 'App\\ServiceFactory\\Repository\\ArticleRepositoryFactory';
+
 return $config;
