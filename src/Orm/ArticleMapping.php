@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Orm;
 
-use App\Model\Article;
 use App\Model\Category;
 use Chubbyphp\Laminas\Config\Doctrine\Persistence\Mapping\Driver\ClassMapMappingInterface;
 use Doctrine\DBAL\Types\Types;
@@ -15,7 +14,7 @@ use Doctrine\Persistence\Mapping\ClassMetadata;
 final class ArticleMapping implements ClassMapMappingInterface
 {
     /**
-     * @param ORMClassMetadata $metadata
+     * @param ClassMetadata<Article> $metadata
      */
     public function configureMapping(ClassMetadata $metadata): void
     {
@@ -30,6 +29,7 @@ final class ArticleMapping implements ClassMapMappingInterface
         $builder->addField('image', Types::STRING, ['nullable' => true]);
         $builder->createManyToOne('category', Category::class)
             ->addJoinColumn('category_id', 'id')
+            ->inversedBy('articles')
             ->build()
         ;
     }

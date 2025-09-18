@@ -43,11 +43,6 @@ final class ArticleRepository implements RepositoryInterface
             $queryBuilder->setParameter('title', '%'.$filters['title'].'%');
         }
 
-        if (isset($filters['tag'])) {
-            $queryBuilder->andWhere($queryBuilder->expr()->like('a.tag', ':tag'));
-            $queryBuilder->setParameter('tag', '%'.$filters['tag'].'%');
-        }
-
         $countQueryBuilder = clone $queryBuilder;
         $countQueryBuilder->select($queryBuilder->expr()->count('a.id'));
 

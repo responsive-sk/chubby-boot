@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace App\Model;
 
 use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\UuidInterface;
 
 class Article
 {
-    private UuidInterface $id;
+    private string $id;
 
-    private \DateTime $createdAt;
+    private \DateTimeImmutable $createdAt;
 
-    private \DateTime $updatedAt;
+    private ?\DateTimeImmutable $updatedAt;
 
     private string $title;
 
@@ -27,27 +26,27 @@ class Article
 
     public function __construct()
     {
-        $this->id = Uuid::uuid4();
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
+        $this->id = Uuid::uuid4()->toString();
+        $this->createdAt = new \DateTimeImmutable();
+        $this->updatedAt = null;
     }
 
-    public function getId(): UuidInterface
+    public function getId(): string
     {
         return $this->id;
     }
 
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): \DateTimeImmutable
     {
         return $this->createdAt;
     }
 
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTime $updatedAt): void
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Orm;
 
 use App\Model\Article;
-use App\Model\Category;
 use Chubbyphp\Laminas\Config\Doctrine\Persistence\Mapping\Driver\ClassMapMappingInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
@@ -28,6 +27,7 @@ final class CategoryMapping implements ClassMapMappingInterface
         $builder->addField('image', Types::STRING, ['nullable' => true]);
         $builder->createOneToMany('articles', Article::class)
             ->mappedBy('category')
+            ->cascadeRemove()
             ->build()
         ;
     }

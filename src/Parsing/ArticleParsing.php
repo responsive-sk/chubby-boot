@@ -11,6 +11,8 @@ use App\Dto\Collection\ArticleCollectionResponse;
 use App\Dto\Collection\ArticleCollectionSort;
 use App\Dto\Model\ArticleRequest;
 use App\Dto\Model\ArticleResponse;
+use App\Dto\Model\CategoryRequest;
+use App\Dto\Model\CategoryResponse;
 use Chubbyphp\Framework\Router\UrlGeneratorInterface;
 use Chubbyphp\Parsing\ParserInterface;
 use Chubbyphp\Parsing\Schema\ObjectSchemaInterface;
@@ -37,14 +39,13 @@ final class ArticleParsing implements ParsingInterface
             $p = $this->parser;
 
             $this->collectionRequestSchema = $p->object([
-                'offset' => $p->union([$p->string()->toInt(), $p->int()->default(CollectionInterface::LIMIT)]),
+                'offset' => $p->union([$p->string()->toInt(), $p->int()->default(0)]),
                 'limit' => $p->union([
                     $p->string()->toInt(),
                     $p->int()->default(CollectionInterface::LIMIT),
                 ]),
                 'filters' => $p->object([
                     'title' => $p->string()->nullable()->default(null),
-                    'tag' => $p->string()->nullable()->default(null),
                 ], ArticleCollectionFilters::class)->strict()->default([]),
                 'sort' => $p->object([
                     'title' => $p->union([
@@ -68,7 +69,6 @@ final class ArticleParsing implements ParsingInterface
                 'limit' => $p->int(),
                 'filters' => $p->object([
                     'title' => $p->string()->nullable(),
-                    'tag' => $p->string()->nullable(),
                 ], ArticleCollectionFilters::class)->strict(),
                 'sort' => $p->object([
                     'title' => $p->union([
@@ -107,6 +107,7 @@ final class ArticleParsing implements ParsingInterface
                     return $articleCollectionResponse;
                 })
                 ->postParse(static function (object $object): array {
+                    /** @var non-empty-string $json */
                     $json = json_encode($object);
 
                     return json_decode($json, true);
@@ -127,7 +128,7 @@ final class ArticleParsing implements ParsingInterface
                 'content' => $p->string()->minLength(1),
                 'tag' => $p->string()->minLength(1)->nullable(),
                 'image' => $p->string()->nullable(),
-                'category' => $p->object()->nullable(),
+                'categoryId' => $p->string()->nullable(),
             ], ArticleRequest::class)->strict(['id', 'createdAt', 'updatedAt', '_type', '_links']);
         }
 
@@ -147,7 +148,11 @@ final class ArticleParsing implements ParsingInterface
                 'content' => $p->string(),
                 'tag' => $p->string()->nullable(),
                 'image' => $p->string()->nullable(),
-                'category' => $p->object()->nullable(),
+                'category' => $p->object([
+                    'id' => $p->string(),
+                    'name' => $p->string(),
+                    '_type' => $p->literal('category')->default('category'),
+                ], CategoryResponse::class)->nullable(),
                 '_type' => $p->literal('article')->default('article'),
             ], ArticleResponse::class)->strict()
                 ->postParse(function (ArticleResponse $articleResponse) {
@@ -175,6 +180,7 @@ final class ArticleParsing implements ParsingInterface
                     return $articleResponse;
                 })
                 ->postParse(static function (object $object): array {
+                    /** @var non-empty-string $json */
                     $json = json_encode($object);
 
                     return json_decode($json, true);

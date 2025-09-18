@@ -11,6 +11,7 @@ use App\Repository\RepositoryInterface;
 use App\RequestHandler\Api\Crud\ListRequestHandler;
 use Chubbyphp\DecodeEncode\Encoder\EncoderInterface;
 use Chubbyphp\HttpException\HttpExceptionInterface;
+use Chubbyphp\Mock\MockMethod\WithCallback;
 use Chubbyphp\Mock\MockMethod\WithException;
 use Chubbyphp\Mock\MockMethod\WithoutReturn;
 use Chubbyphp\Mock\MockMethod\WithReturn;
@@ -43,12 +44,17 @@ final class ListRequestHandlerTest extends TestCase
 
         /** @var ServerRequestInterface $request */
         $request = $builder->create(ServerRequestInterface::class, [
-            new WithReturn('getAttribute', ['accept', null], 'application/json'),
+            new WithCallback('getAttribute', static function (string $name, mixed $default = null) {
+                if ($name === 'accept') {
+                    return 'application/json';
+                }
+                return $default;
+            }),
             new WithReturn('getQueryParams', [], $queryAsArray),
         ]);
 
         $collectionRequestSchema = $builder->create(ObjectSchemaInterface::class, [
-            new WithException('parse', [$queryAsArray], $parserErrorException),
+            new WithException('parse', [$request], $parserErrorException),
         ]);
 
         /** @var ParsingInterface $parsing */
@@ -75,15 +81,8 @@ final class ListRequestHandlerTest extends TestCase
         try {
             $requestHandler->handle($request);
             self::fail('Expected Exception');
-        } catch (HttpExceptionInterface $e) {
-            self::assertSame([
-                'type' => 'https://datatracker.ietf.org/doc/html/rfc2616#section-10.4.1',
-                'status' => 400,
-                'title' => 'Bad Request',
-                'detail' => null,
-                'instance' => null,
-                'invalidParameters' => [],
-            ], $e->jsonSerialize());
+        } catch (ParserErrorException $e) {
+            self::assertInstanceOf(ParserErrorException::class, $e);
         }
     }
 
@@ -103,14 +102,19 @@ final class ListRequestHandlerTest extends TestCase
 
         /** @var ServerRequestInterface $request */
         $request = $builder->create(ServerRequestInterface::class, [
-            new WithReturn('getAttribute', ['accept', null], 'application/json'),
+            new WithCallback('getAttribute', static function (string $name, mixed $default = null) {
+                if ($name === 'accept') {
+                    return 'application/json';
+                }
+                return $default;
+            }),
             new WithReturn('getQueryParams', [], $queryAsArray),
         ]);
 
         /** @var ResponseInterface $response */
         $response = $builder->create(ResponseInterface::class, [
-            new WithReturnSelf('withHeader', ['Content-Type', 'application/json']),
             new WithReturn('getBody', [], $responseBody),
+            new WithReturnSelf('withHeader', ['Content-Type', 'application/json']),
         ]);
 
         /** @var CollectionInterface $collection */
@@ -118,12 +122,13 @@ final class ListRequestHandlerTest extends TestCase
 
         /** @var CollectionRequestInterface $collectionRequest */
         $collectionRequest = $builder->create(CollectionRequestInterface::class, [
-            new WithReturn('createCollection', [], $collection),
+            new WithCallback('toCollection', static fn() => $collection),
+            new WithCallback('toCollectionResponse', static fn() => $queryAsArray),
         ]);
 
         /** @var ObjectSchemaInterface $collectionRequestSchema */
         $collectionRequestSchema = $builder->create(ObjectSchemaInterface::class, [
-            new WithReturn('parse', [$queryAsArray], $collectionRequest),
+            new WithReturn('parse', [$request], $collectionRequest),
         ]);
 
         /** @var ObjectSchemaInterface $collectionResponseSchema */

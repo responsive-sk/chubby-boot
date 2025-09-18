@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace App\ServiceFactory\Framework;
 
 use App\Middleware\ApiExceptionMiddleware;
-use App\Model\Pet;
-use App\RequestHandler\Api\Crud\CreateRequestHandler;
-use App\RequestHandler\Api\Crud\DeleteRequestHandler;
-use App\RequestHandler\Api\Crud\ListRequestHandler;
-use App\RequestHandler\Api\Crud\ReadRequestHandler;
-use App\RequestHandler\Api\Crud\UpdateRequestHandler;
+use App\RequestHandler\Api\Crud\CreateRequestHandler as BaseCreateRequestHandler;
+use App\RequestHandler\Api\Crud\DeleteRequestHandler as BaseDeleteRequestHandler;
+use App\RequestHandler\Api\Crud\ListRequestHandler as BaseListRequestHandler;
+use App\RequestHandler\Api\Crud\ReadRequestHandler as BaseReadRequestHandler;
+use App\RequestHandler\Api\Crud\UpdateRequestHandler as BaseUpdateRequestHandler;
 use App\RequestHandler\OpenapiRequestHandler;
 use App\RequestHandler\PingRequestHandler;
 use Chubbyphp\Framework\Middleware\LazyMiddleware;
@@ -34,11 +33,11 @@ final class RoutesByNameFactory
         $contentType = new LazyMiddleware($container, ContentTypeMiddleware::class);
         $apiExceptionMiddleware = new LazyMiddleware($container, ApiExceptionMiddleware::class);
 
-        $petList = new LazyRequestHandler($container, Pet::class . ListRequestHandler::class);
-        $petCreate = new LazyRequestHandler($container, Pet::class . CreateRequestHandler::class);
-        $petRead = new LazyRequestHandler($container, Pet::class . ReadRequestHandler::class);
-        $petUpdate = new LazyRequestHandler($container, Pet::class . UpdateRequestHandler::class);
-        $petDelete = new LazyRequestHandler($container, Pet::class . DeleteRequestHandler::class);
+        $articleList = new LazyRequestHandler($container, BaseListRequestHandler::class);
+        $articleCreate = new LazyRequestHandler($container, BaseCreateRequestHandler::class);
+        $articleRead = new LazyRequestHandler($container, BaseReadRequestHandler::class);
+        $articleUpdate = new LazyRequestHandler($container, BaseUpdateRequestHandler::class);
+        $articleDelete = new LazyRequestHandler($container, BaseDeleteRequestHandler::class);
 
         return new RoutesByName(
             Group::create('', [
@@ -46,12 +45,12 @@ final class RoutesByNameFactory
                 Route::get('/ping', 'ping', $ping),
                 Route::get('/openapi', 'openapi', $openApi),
                 Group::create('/api', [
-                    Group::create('/pets', [
-                        Route::get('', 'pet_list', $petList),
-                        Route::post('', 'pet_create', $petCreate, [$contentType]),
-                        Route::get('/{id}', 'pet_read', $petRead),
-                        Route::put('/{id}', 'pet_update', $petUpdate, [$contentType]),
-                        Route::delete('/{id}', 'pet_delete', $petDelete),
+                    Group::create('/articles', [
+                        Route::get('', 'article_list', $articleList),
+                        Route::post('', 'article_create', $articleCreate, [$contentType]),
+                        Route::get('/{id}', 'article_read', $articleRead),
+                        Route::put('/{id}', 'article_update', $articleUpdate, [$contentType]),
+                        Route::delete('/{id}', 'article_delete', $articleDelete),
                     ]),
                 ], [$accept, $apiExceptionMiddleware]),
             ])->getRoutes()

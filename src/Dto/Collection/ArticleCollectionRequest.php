@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace App\Dto\Collection;
 
 use App\Collection\CollectionInterface;
-use App\Collection\PetCollection;
+use App\Collection\ArticleCollection;
 
-final class PetCollectionRequest implements CollectionRequestInterface
+final class ArticleCollectionRequest implements CollectionRequestInterface
 {
     public int $offset;
 
     public int $limit;
 
-    public PetCollectionFilters $filters;
+    public ArticleCollectionFilters $filters;
 
-    public PetCollectionSort $sort;
+    public ArticleCollectionSort $sort;
 
     public function createCollection(): CollectionInterface
     {
-        $collection = new PetCollection();
+        $collection = new ArticleCollection();
         $collection->setOffset($this->offset);
         $collection->setLimit($this->limit);
         $collection->setFilters((array) $this->filters);
@@ -33,6 +33,9 @@ final class PetCollectionRequest implements CollectionRequestInterface
         return $this->createCollection();
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toCollectionResponse(CollectionInterface $collection): array
     {
         return [
@@ -42,7 +45,7 @@ final class PetCollectionRequest implements CollectionRequestInterface
             'sort' => (array) $this->sort,
             'items' => $collection->getItems(),
             'count' => $collection->getCount(),
-            '_type' => 'petCollection',
+            '_type' => 'articleCollection',
         ];
     }
 }

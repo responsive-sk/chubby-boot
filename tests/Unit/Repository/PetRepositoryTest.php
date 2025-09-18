@@ -38,15 +38,9 @@ final class PetRepositoryTest extends TestCase
         /** @var CollectionInterface $collection */
         $collection = $builder->create(CollectionInterface::class, []);
 
-        $collectionClass = $collection::class;
-
         $this->expectException(\TypeError::class);
         $this->expectExceptionMessage(
-            \sprintf(
-                'App\Repository\PetRepository::resolveCollection() expects parameter 1 to be'
-                    .' App\Collection\PetCollection, %s given',
-                $collectionClass
-            )
+            'App\Repository\PetRepository::resolveCollection() expects parameter 1 to be App\Collection\PetCollection'
         );
 
         /** @var EntityManager $entityManager */

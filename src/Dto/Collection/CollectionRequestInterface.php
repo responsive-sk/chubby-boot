@@ -9,4 +9,11 @@ use App\Collection\CollectionInterface;
 interface CollectionRequestInterface
 {
     public function createCollection(): CollectionInterface;
+
+    public function toCollection(): CollectionInterface;
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function toCollectionResponse(CollectionInterface $collection): array;
 }

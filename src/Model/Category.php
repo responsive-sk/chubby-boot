@@ -7,46 +7,51 @@ namespace App\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\UuidInterface;
 
 class Category
 {
-    private UuidInterface $id;
+    private string $id;
 
-    private \DateTime $createdAt;
+    private \DateTimeImmutable $createdAt;
 
-    private \DateTime $updatedAt;
+    private ?\DateTimeImmutable $updatedAt;
 
     private string $name;
 
     private ?string $image;
 
+    /** @var Collection<int, Article> */
     private Collection $articles;
 
     public function __construct()
     {
-        $this->id = Uuid::uuid4();
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
+        $this->id = Uuid::uuid4()->toString();
+        $this->createdAt = new \DateTimeImmutable();
+        $this->updatedAt = null;
         $this->articles = new ArrayCollection();
     }
 
-    public function getId(): UuidInterface
+    public function getId(): string
     {
         return $this->id;
     }
 
-    public function getCreatedAt(): \DateTime
+    public function setId(string $id): void
+    {
+        $this->id = $id;
+    }
+
+    public function getCreatedAt(): \DateTimeImmutable
     {
         return $this->createdAt;
     }
 
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTime $updatedAt): void
+    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -71,6 +76,9 @@ class Category
         $this->image = $image;
     }
 
+    /**
+     * @return Collection<int, Article>
+     */
     public function getArticles(): Collection
     {
         return $this->articles;

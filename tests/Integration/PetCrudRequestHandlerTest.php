@@ -15,7 +15,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
     {
         $response = $this->httpRequest(
             'POST',
-            '/api/pets',
+            '/api/articles',
             [
                 'Accept' => 'text/html',
             ]
@@ -28,7 +28,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
     {
         $response = $this->httpRequest(
             'POST',
-            '/api/pets',
+            '/api/articles',
             [
                 'Accept' => 'application/json',
                 'Content-Type' => 'text/html',
@@ -62,7 +62,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
     {
         $response = $this->httpRequest(
             'POST',
-            '/api/pets',
+            '/api/articles',
             [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
@@ -112,7 +112,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
     {
         $response = $this->httpRequest(
             'GET',
-            '/api/pets',
+            '/api/articles',
             [
                 'Accept' => 'text/html',
             ]
@@ -125,7 +125,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
     {
         $response = $this->httpRequest(
             'GET',
-            '/api/pets?filters[name2]=test&sort[name]=test',
+            '/api/articles?filters[name2]=test&sort[name]=test',
             [
                 'Accept' => 'application/json',
             ]
@@ -181,7 +181,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
 
         $response = $this->httpRequest(
             'GET',
-            '/api/pets?sort[name]=desc',
+            '/api/articles?sort[name]=desc',
             [
                 'Accept' => 'application/json',
             ]
@@ -226,7 +226,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
 
         self::assertTrue($found);
 
-        self::assertSame(['href' => '/api/pets?offset=0&limit=20&sort%5Bname%5D=desc',
+        self::assertSame(['href' => '/api/articles?offset=0&limit=20&sort%5Bname%5D=desc',
             'templated' => false,
             'rel' => [],
             'attributes' => [
@@ -234,7 +234,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
             ],
         ], $petCollection['_links']['list']);
         self::assertSame([
-            'href' => '/api/pets',
+            'href' => '/api/articles',
             'templated' => false,
             'rel' => [],
             'attributes' => [
@@ -248,7 +248,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
     {
         $response = $this->httpRequest(
             'GET',
-            '/api/pets/e19a00b4-241e-4241-a641-bac2a4a65f64',
+            '/api/articles/e19a00b4-241e-4241-a641-bac2a4a65f64',
             [
                 'Accept' => 'text/html',
             ]
@@ -261,7 +261,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
     {
         $response = $this->httpRequest(
             'GET',
-            '/api/pets/e19a00b4-241e-4241-a641-bac2a4a65f64',
+            '/api/articles/e19a00b4-241e-4241-a641-bac2a4a65f64',
             [
                 'Accept' => 'application/json',
             ]
@@ -289,7 +289,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
 
         $response = $this->httpRequest(
             'GET',
-            \sprintf('/api/pets/%s', $existingPet['id']),
+            \sprintf('/api/articles/%s', $existingPet['id']),
             [
                 'Accept' => 'application/json',
             ]
@@ -312,7 +312,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
     {
         $response = $this->httpRequest(
             'PUT',
-            '/api/pets/e19a00b4-241e-4241-a641-bac2a4a65f64',
+            '/api/articles/e19a00b4-241e-4241-a641-bac2a4a65f64',
             [
                 'Accept' => 'text/html',
             ]
@@ -325,7 +325,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
     {
         $response = $this->httpRequest(
             'PUT',
-            '/api/pets/e19a00b4-241e-4241-a641-bac2a4a65f64',
+            '/api/articles/e19a00b4-241e-4241-a641-bac2a4a65f64',
             [
                 'Accept' => 'application/json',
                 'Content-Type' => 'text/html',
@@ -359,7 +359,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
     {
         $response = $this->httpRequest(
             'PUT',
-            '/api/pets/e19a00b4-241e-4241-a641-bac2a4a65f64',
+            '/api/articles/e19a00b4-241e-4241-a641-bac2a4a65f64',
             [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
@@ -388,7 +388,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
 
         $response = $this->httpRequest(
             'PUT',
-            \sprintf('/api/pets/%s', $existingPet['id']),
+            \sprintf('/api/articles/%s', $existingPet['id']),
             [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
@@ -429,7 +429,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
 
         $response = $this->httpRequest(
             'PUT',
-            \sprintf('/api/pets/%s', $existingPet['id']),
+            \sprintf('/api/articles/%s', $existingPet['id']),
             [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
@@ -456,7 +456,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
 
         $response = $this->httpRequest(
             'PUT',
-            \sprintf('/api/pets/%s', $existingPet['id']),
+            \sprintf('/api/articles/%s', $existingPet['id']),
             [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
@@ -479,7 +479,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
     {
         $response = $this->httpRequest(
             'DELETE',
-            '/api/pets/e19a00b4-241e-4241-a641-bac2a4a65f64',
+            '/api/articles/e19a00b4-241e-4241-a641-bac2a4a65f64',
             [
                 'Accept' => 'text/html',
             ]
@@ -492,7 +492,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
     {
         $response = $this->httpRequest(
             'DELETE',
-            '/api/pets/e19a00b4-241e-4241-a641-bac2a4a65f64',
+            '/api/articles/e19a00b4-241e-4241-a641-bac2a4a65f64',
             [
                 'Accept' => 'application/json',
             ]
@@ -520,7 +520,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
 
         $response = $this->httpRequest(
             'DELETE',
-            \sprintf('/api/pets/%s', $existingPet['id']),
+            \sprintf('/api/articles/%s', $existingPet['id']),
             [
                 'Accept' => 'application/json',
             ]
@@ -533,7 +533,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
     {
         $response = $this->httpRequest(
             'POST',
-            '/api/pets',
+            '/api/articles',
             [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
@@ -583,7 +583,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
         }
         self::assertSame(is_countable($expectedPet['vaccinations']) ? \count($expectedPet['vaccinations']) : 0, is_countable($pet['vaccinations']) ? \count($pet['vaccinations']) : 0);
         self::assertSame([
-            'href' => \sprintf('/api/pets/%s', $pet['id']),
+            'href' => \sprintf('/api/articles/%s', $pet['id']),
             'templated' => false,
             'rel' => [],
             'attributes' => [
@@ -591,7 +591,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
             ],
         ], $pet['_links']['read']);
         self::assertSame([
-            'href' => \sprintf('/api/pets/%s', $pet['id']),
+            'href' => \sprintf('/api/articles/%s', $pet['id']),
             'templated' => false,
             'rel' => [],
             'attributes' => [
@@ -599,7 +599,7 @@ final class PetCrudRequestHandlerTest extends AbstractIntegrationTestCase
             ],
         ], $pet['_links']['update']);
         self::assertSame([
-            'href' => \sprintf('/api/pets/%s', $pet['id']),
+            'href' => \sprintf('/api/articles/%s', $pet['id']),
             'templated' => false,
             'rel' => [],
             'attributes' => [

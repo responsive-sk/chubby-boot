@@ -7,12 +7,11 @@ namespace App;
 use App\Model\Article;
 use App\Model\Category;
 use Doctrine\ORM\EntityManagerInterface;
-use Ramsey\Uuid\Uuid;
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 $env = getenv('APP_ENV') ?: 'dev';
-$config = require __DIR__ . '/container.php';
+$config = require __DIR__.'/container.php';
 $container = $config($env);
 
 /** @var EntityManagerInterface $entityManager */

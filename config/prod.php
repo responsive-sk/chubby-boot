@@ -37,12 +37,19 @@ use App\ServiceFactory\Negotiation\AcceptNegotiatorSupportedMediaTypesFactory;
 use App\ServiceFactory\Negotiation\ContentTypeNegotiatorSupportedMediaTypesFactory;
 use App\ServiceFactory\Parsing\ParserFactory;
 use App\ServiceFactory\Parsing\PetParsingFactory;
+use App\ServiceFactory\Parsing\ArticleParsingFactory;
 use App\ServiceFactory\Repository\PetRepositoryFactory;
+use App\ServiceFactory\Repository\ArticleRepositoryFactory;
 use App\ServiceFactory\RequestHandler\Api\Crud\PetCreateRequestHandlerFactory;
 use App\ServiceFactory\RequestHandler\Api\Crud\PetDeleteRequestHandlerFactory;
 use App\ServiceFactory\RequestHandler\Api\Crud\PetListRequestHandlerFactory;
 use App\ServiceFactory\RequestHandler\Api\Crud\PetReadRequestHandlerFactory;
 use App\ServiceFactory\RequestHandler\Api\Crud\PetUpdateRequestHandlerFactory;
+use App\ServiceFactory\RequestHandler\Api\Crud\ArticleCreateRequestHandlerFactory;
+use App\ServiceFactory\RequestHandler\Api\Crud\ArticleDeleteRequestHandlerFactory;
+use App\ServiceFactory\RequestHandler\Api\Crud\ArticleListRequestHandlerFactory;
+use App\ServiceFactory\RequestHandler\Api\Crud\ArticleReadRequestHandlerFactory;
+use App\ServiceFactory\RequestHandler\Api\Crud\ArticleUpdateRequestHandlerFactory;
 use App\ServiceFactory\RequestHandler\OpenapiRequestHandlerFactory;
 use App\ServiceFactory\RequestHandler\PingRequestHandlerFactory;
 use Chubbyphp\Cors\CorsMiddleware;
@@ -130,13 +137,20 @@ return [
             MiddlewareInterface::class . '[]' => MiddlewaresFactory::class,
             OpenapiRequestHandler::class => OpenapiRequestHandlerFactory::class,
             ParserInterface::class => ParserFactory::class,
-            Pet::class . CreateRequestHandler::class => PetCreateRequestHandlerFactory::class,
-            Pet::class . DeleteRequestHandler::class => PetDeleteRequestHandlerFactory::class,
-            Pet::class . ListRequestHandler::class => PetListRequestHandlerFactory::class,
-            Pet::class . ReadRequestHandler::class => PetReadRequestHandlerFactory::class,
-            Pet::class . UpdateRequestHandler::class => PetUpdateRequestHandlerFactory::class,
+            CreateRequestHandler::class => ArticleCreateRequestHandlerFactory::class,
+            DeleteRequestHandler::class => ArticleDeleteRequestHandlerFactory::class,
+            ListRequestHandler::class => ArticleListRequestHandlerFactory::class,
+            ReadRequestHandler::class => ArticleReadRequestHandlerFactory::class,
+            UpdateRequestHandler::class => ArticleUpdateRequestHandlerFactory::class,
             PetParsing::class => PetParsingFactory::class,
+            ArticleParsing::class => ArticleParsingFactory::class,
             PetRepository::class => PetRepositoryFactory::class,
+            ArticleRepository::class => ArticleRepositoryFactory::class,
+            CreateRequestHandler::class => \App\RequestHandler\Api\Crud\CreateRequestHandler::class,
+            DeleteRequestHandler::class => \App\RequestHandler\Api\Crud\DeleteRequestHandler::class,
+            ListRequestHandler::class => \App\RequestHandler\Api\Crud\ListRequestHandler::class,
+            ReadRequestHandler::class => \App\RequestHandler\Api\Crud\ReadRequestHandler::class,
+            UpdateRequestHandler::class => \App\RequestHandler\Api\Crud\UpdateRequestHandler::class,
             PingRequestHandler::class => PingRequestHandlerFactory::class,
             ResponseFactoryInterface::class => ResponseFactoryFactory::class,
             RouteMatcherInterface::class => RouteMatcherFactory::class,
