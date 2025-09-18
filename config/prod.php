@@ -3,8 +3,12 @@
 declare(strict_types=1);
 
 use App\Middleware\ApiExceptionMiddleware;
+use App\Model\Article;
+use App\Model\Category;
 use App\Model\Pet;
 use App\Model\Vaccination;
+use App\Orm\ArticleMapping;
+use App\Orm\CategoryMapping;
 use App\Orm\PetMapping;
 use App\Orm\VaccinationMapping;
 use App\Parsing\PetParsing;
@@ -147,6 +151,7 @@ return [
     'directories' => [
         'cache' => $cacheDir,
         'log' => $logDir,
+        'db' => $rootDir . '/var',
     ],
     'doctrine' => [
         'cache' => [
@@ -156,13 +161,8 @@ return [
         ],
         'dbal' => [
             'connection' => [
-                'driver' => 'pdo_pgsql',
-                'charset' => 'utf8',
-                'user' => getenv('DATABASE_USER'),
-                'password' => getenv('DATABASE_PASS'),
-                'host' => getenv('DATABASE_HOST'),
-                'port' => getenv('DATABASE_PORT'),
-                'dbname' => getenv('DATABASE_NAME'),
+                'driver' => 'pdo_sqlite',
+                'path' => $rootDir . '/var/articlestore.db',
             ],
         ],
         'driver' => [
@@ -170,6 +170,8 @@ return [
                 'map' => [
                     Pet::class => PetMapping::class,
                     Vaccination::class => VaccinationMapping::class,
+                    Article::class => ArticleMapping::class,
+                    Category::class => CategoryMapping::class,
                 ],
             ],
         ],

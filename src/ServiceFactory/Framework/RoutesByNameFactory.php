@@ -34,14 +34,15 @@ final class RoutesByNameFactory
         $contentType = new LazyMiddleware($container, ContentTypeMiddleware::class);
         $apiExceptionMiddleware = new LazyMiddleware($container, ApiExceptionMiddleware::class);
 
-        $petList = new LazyRequestHandler($container, Pet::class.ListRequestHandler::class);
-        $petCreate = new LazyRequestHandler($container, Pet::class.CreateRequestHandler::class);
-        $petRead = new LazyRequestHandler($container, Pet::class.ReadRequestHandler::class);
-        $petUpdate = new LazyRequestHandler($container, Pet::class.UpdateRequestHandler::class);
-        $petDelete = new LazyRequestHandler($container, Pet::class.DeleteRequestHandler::class);
+        $petList = new LazyRequestHandler($container, Pet::class . ListRequestHandler::class);
+        $petCreate = new LazyRequestHandler($container, Pet::class . CreateRequestHandler::class);
+        $petRead = new LazyRequestHandler($container, Pet::class . ReadRequestHandler::class);
+        $petUpdate = new LazyRequestHandler($container, Pet::class . UpdateRequestHandler::class);
+        $petDelete = new LazyRequestHandler($container, Pet::class . DeleteRequestHandler::class);
 
         return new RoutesByName(
             Group::create('', [
+                Route::get('/', 'root', $ping),
                 Route::get('/ping', 'ping', $ping),
                 Route::get('/openapi', 'openapi', $openApi),
                 Group::create('/api', [

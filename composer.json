@@ -67,15 +67,11 @@
         "database:schema:validate": "bin/console orm:validate-schema",
         "fix:cs": "mkdir -p build && PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix --cache-file=build/phpcs.cache",
         "setup:dev": [
-            "@database:drop --env=dev",
-            "@database:create --env=dev",
             "@database:schema:update --env=dev",
             "@database:schema:validate --env=dev",
             "@clean-directories --env=dev"
         ],
         "setup:phpunit": [
-            "@database:drop --env=phpunit",
-            "@database:create --env=phpunit",
             "@database:schema:update --env=phpunit",
             "@database:schema:validate --env=phpunit",
             "@clean-directories --env=phpunit"
