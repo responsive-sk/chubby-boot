@@ -1,0 +1,56 @@
+{# templates/app/home-page.html.twig #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    
+    {# Svelte CSS #}
+    <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+    {# Server-rendered SEO content #}
+    <header class="header">
+        <nav class="container">
+            <div class="logo">
+                <a href="/">Boson PHP</a>
+            </div>
+            <ul class="nav-links">
+                {% for item in navigation %}
+                    <li>
+                        <a href="{{ item.href }}" class="{{ item.current ? 'active' : '' }}">
+                            {{ item.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        {# PRÁZDNY kontajner pre Svelte Hero - žiadny fallback content #}
+        <div id="svelte-hero"></div>
+        
+        {# SEO content #}
+        <section class="seo-content">
+            <div class="container">
+                <h2>Why Choose Boson PHP?</h2>
+                <div class="features">
+                    {% for feature in features %}
+                        <div class="feature">
+                            <span class="icon">{{ feature.icon }}</span>
+                            <h3>{{ feature.title }}</h3>
+                            <p>{{ feature.description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {# Svelte JS #}
+    <script type="module" src="/assets/app.js"></script>
+</body>
+</html>

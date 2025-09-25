@@ -1,0 +1,31 @@
+{% extends 'layout/default.html.twig' %}
+
+{% block title %}Test Frontend a Svelte Islands{% endblock %}
+
+{% block stylesheets %}
+  {{ vite_entry_link_tags('resources/js/boot.ts') }}
+  {{ vite_entry_link_tags('frontend/src/lib/boot/islands.ts') }}
+  <link rel="modulepreload" href="/build/assets/AddToCart-CQ3RHMW4.js" />
+  <link rel="modulepreload" href="/build/assets/Alert-CsKYxqnh.js" />
+{% endblock %}
+
+{% block content %}
+  <h1>Test Frontend a Svelte Islands</h1>
+
+  <h2>AddToCart Island</h2>
+  <div data-component="AddToCart" data-props='{"productId": 1}'></div>
+
+  <h2>Alert Island</h2>
+  <div data-component="Alert" data-props='{"message": "Test alert message", "type": "success"}'></div>
+
+  <h2>Nav Island (ak existuje)</h2>
+  <div data-component="Nav"></div>
+
+  <h2>Hero Island</h2>
+  <div data-component="Hero"></div>
+{% endblock %}
+
+{% block scripts %}
+  {{ vite_entry_script_tags('resources/js/boot.ts') }}
+  {{ vite_entry_script_tags('frontend/src/lib/boot/islands.ts') }}
+{% endblock %}

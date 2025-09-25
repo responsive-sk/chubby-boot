@@ -28,6 +28,7 @@ final class RoutesByNameFactory
     {
         $ping = new LazyRequestHandler($container, PingRequestHandler::class);
         $openApi = new LazyRequestHandler($container, OpenapiRequestHandler::class);
+        $articleListHtml = new LazyRequestHandler($container, \App\RequestHandler\ArticleListHtmlRequestHandler::class);
 
         $accept = new LazyMiddleware($container, AcceptMiddleware::class);
         $contentType = new LazyMiddleware($container, ContentTypeMiddleware::class);
@@ -41,9 +42,10 @@ final class RoutesByNameFactory
 
         return new RoutesByName(
             Group::create('', [
-                Route::get('/', 'root', $ping),
+                Route::get('/', 'home', new \App\RequestHandler\HomePageRequestHandler($container->get(\Mezzio\Template\TemplateRendererInterface::class))),
                 Route::get('/ping', 'ping', $ping),
                 Route::get('/openapi', 'openapi', $openApi),
+                Route::get('/articles/list', 'articleListHtml', $articleListHtml),
                 Group::create('/api', [
                     Group::create('/articles', [
                         Route::get('', 'article_list', $articleList),

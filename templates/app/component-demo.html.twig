@@ -1,0 +1,7 @@
+<div class="p-4 border rounded bg-white shadow">
+  <h2 class="text-xl font-semibold mb-2">Server-rendered Component Demo</h2>
+  <p class="mb-4">{{ message }}</p>
+  <button class="px-4 py-2 rounded bg-emerald-600 text-white" hx-get="/api/ping" hx-target="#count-display" hx-swap="innerHTML">
+    Ping API
+  </button>
+</div>

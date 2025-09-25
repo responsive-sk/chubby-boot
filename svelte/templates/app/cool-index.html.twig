@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title|default('Mezzio + Svelte | Modern PHP Frontend') }}</title>
+
+    <meta name="description" content="{{ description|default('A modern, SEO-friendly landing page powered by Mezzio, Svelte, HTMX and Tailwind CSS.') }}" />
+    <link rel="canonical" href="{{ canonical|default(app.requestUri|default('/cool')) }}" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    {% set _title = title|default('Mezzio + Svelte | Modern PHP Frontend') %}
+    {% set _desc = description|default('A modern, SEO-friendly landing page powered by Mezzio, Svelte, HTMX and Tailwind CSS.') %}
+    {% set _canon = canonical|default('/cool') %}
+    {% set _og_image = og_image|default('/build/og-image.png') %}
+
+    <meta property="og:title" content="{{ og_title|default(_title) }}" />
+    <meta property="og:description" content="{{ og_description|default(_desc) }}" />
+    <meta property="og:url" content="{{ og_url|default(_canon) }}" />
+    <meta property="og:image" content="{{ _og_image }}" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ tw_title|default(_title) }}" />
+    <meta name="twitter:description" content="{{ tw_description|default(_desc) }}" />
+    <meta name="twitter:image" content="{{ tw_image|default(_og_image) }}" />
+
+    {{ vite_entry_link_tags('frontend/src/app.ts') }}
+</head>
+<body class="min-h-screen font-sans antialiased bg-gray-950 text-white">
+    <header>
+        <div id="nav-root"></div>
+    </header>
+
+    <main id="page" class="min-h-screen">
+        <script>
+            window.__SEO__ = {
+              title: {{ (title|default('Mezzio + Svelte | Modern PHP Frontend'))|json_encode|raw }},
+              description: {{ (description|default('A modern, SEO-friendly landing page powered by Mezzio, Svelte, HTMX and Tailwind CSS.'))|json_encode|raw }}
+            };
+        </script>
+        <div id="cool-app"></div>
+    </main>
+
+    <footer class="border-t border-white/10 mt-20 py-10">
+        <div class="mx-auto max-w-6xl px-4 text-sm text-white/70">
+            © {{ "now"|date("Y") }} Mezzio Demo — Built with Svelte 5 + Tailwind
+        </div>
+    </footer>
+
+    {{ vite_entry_script_tags('frontend/src/app.ts') }}
+</body>
+</html>

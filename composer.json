@@ -27,6 +27,8 @@
         "chubbyphp/chubbyphp-negotiation": "^2.2",
         "chubbyphp/chubbyphp-parsing": "^1.4.1",
         "doctrine/orm": "^3.5.2",
+        "laminas/laminas-diactoros": "^3.6",
+        "mezzio/mezzio-twigrenderer": "^2.17",
         "monolog/monolog": "^3.9",
         "ramsey/uuid": "^4.9",
         "slim/psr7": "^1.7.1",

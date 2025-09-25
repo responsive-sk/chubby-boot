@@ -1,0 +1,14 @@
+{% extends "layout/default.twig" %}
+
+{% block title %}{{ status }} {{ reason }}{% endblock %}
+
+{% block content %}
+<div class="text-center py-12">
+  <h1 class="text-6xl font-bold text-red-500 mb-4">{{ status }}</h1>
+  <h2 class="text-2xl font-semibold mb-4">Oops! This is awkward.</h2>
+  <p class="mb-4">We encountered a {{ status }} {{ reason }} error.</p>
+  {% if status == 404 %}
+    <p class="mb-8">You are looking for something that doesn't exist or may have moved. Check out one of the links on this page or head back to <a href="{{ url('home') }}" class="text-blue-500 hover:underline">Home</a>.</p>
+  {% endif %}
+</div>
+{% endblock %}

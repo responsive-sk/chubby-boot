@@ -18,6 +18,7 @@ use App\RequestHandler\Api\Crud\DeleteRequestHandler;
 use App\RequestHandler\Api\Crud\ListRequestHandler;
 use App\RequestHandler\Api\Crud\ReadRequestHandler;
 use App\RequestHandler\Api\Crud\UpdateRequestHandler;
+use App\RequestHandler\ArticleListHtmlRequestHandler;
 use App\RequestHandler\OpenapiRequestHandler;
 use App\RequestHandler\PingRequestHandler;
 use App\ServiceFactory\Command\CommandsFactory;
@@ -50,6 +51,7 @@ use App\ServiceFactory\RequestHandler\Api\Crud\ArticleDeleteRequestHandlerFactor
 use App\ServiceFactory\RequestHandler\Api\Crud\ArticleListRequestHandlerFactory;
 use App\ServiceFactory\RequestHandler\Api\Crud\ArticleReadRequestHandlerFactory;
 use App\ServiceFactory\RequestHandler\Api\Crud\ArticleUpdateRequestHandlerFactory;
+use App\ServiceFactory\RequestHandler\ArticleListHtmlRequestHandlerFactory;
 use App\ServiceFactory\RequestHandler\OpenapiRequestHandlerFactory;
 use App\ServiceFactory\RequestHandler\PingRequestHandlerFactory;
 use Chubbyphp\Cors\CorsMiddleware;
@@ -93,6 +95,8 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
+use Mezzio\Twig\TwigRendererFactory;
+use Mezzio\Template\TemplateRendererInterface;
 
 $rootDir = \realpath(__DIR__ . '/..');
 $cacheDir = $rootDir . '/var/cache/' . $env;
@@ -113,6 +117,7 @@ return [
     'dependencies' => [
         'aliases' => [
             EntityManager::class => EntityManagerInterface::class,
+            TemplateRendererInterface::class => 'twig',
         ],
         'factories' => [
             AcceptMiddleware::class => AcceptMiddlewareFactory::class,
@@ -146,6 +151,7 @@ return [
             ArticleParsing::class => ArticleParsingFactory::class,
             PetRepository::class => PetRepositoryFactory::class,
             ArticleRepository::class => ArticleRepositoryFactory::class,
+            ArticleListHtmlRequestHandler::class => ArticleListHtmlRequestHandlerFactory::class,
 
             PingRequestHandler::class => PingRequestHandlerFactory::class,
             ResponseFactoryInterface::class => ResponseFactoryFactory::class,
@@ -156,6 +162,12 @@ return [
             TypeDecoderInterface::class . '[]' => TypeDecodersFactory::class,
             TypeEncoderInterface::class . '[]' => TypeEncodersFactory::class,
             UrlGeneratorInterface::class => UrlGeneratorFactory::class,
+            'twig' => TwigRendererFactory::class,
+            'Twig\Environment' => function($container) {
+                $paths = $container->get('config')['templates']['paths'];
+                $loader = new \Twig\Loader\FilesystemLoader($paths);
+                return new \Twig\Environment($loader);
+            },
         ],
     ],
     'directories' => [
@@ -177,12 +189,10 @@ return [
         ],
         'driver' => [
             'classMap' => [
-                'map' => [
-                    Pet::class => PetMapping::class,
-                    Vaccination::class => VaccinationMapping::class,
-                    Article::class => ArticleMapping::class,
-                    Category::class => CategoryMapping::class,
-                ],
+                Pet::class => PetMapping::class,
+                Vaccination::class => VaccinationMapping::class,
+                Article::class => ArticleMapping::class,
+                Category::class => CategoryMapping::class,
             ],
         ],
         'orm' => [
@@ -201,5 +211,10 @@ return [
         'name' => 'petstore',
         'path' => $logDir . '/' . $env . '.log',
         'level' => Level::Notice,
+    ],
+    'templates' => [
+        'paths' => [
+            'templates' => $rootDir . '/templates',
+        ],
     ],
 ];

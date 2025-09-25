@@ -54,7 +54,7 @@ final class ListRequestHandlerTest extends TestCase
         ]);
 
         $collectionRequestSchema = $builder->create(ObjectSchemaInterface::class, [
-            new WithException('parse', [$request], $parserErrorException),
+            new WithException('parse', [$queryAsArray], $parserErrorException),
         ]);
 
         /** @var ParsingInterface $parsing */
@@ -102,13 +102,13 @@ final class ListRequestHandlerTest extends TestCase
 
         /** @var ServerRequestInterface $request */
         $request = $builder->create(ServerRequestInterface::class, [
+            new WithReturn('getQueryParams', [], $queryAsArray),
             new WithCallback('getAttribute', static function (string $name, mixed $default = null) {
                 if ($name === 'accept') {
                     return 'application/json';
                 }
                 return $default;
             }),
-            new WithReturn('getQueryParams', [], $queryAsArray),
         ]);
 
         /** @var ResponseInterface $response */
@@ -128,18 +128,12 @@ final class ListRequestHandlerTest extends TestCase
 
         /** @var ObjectSchemaInterface $collectionRequestSchema */
         $collectionRequestSchema = $builder->create(ObjectSchemaInterface::class, [
-            new WithReturn('parse', [$request], $collectionRequest),
-        ]);
-
-        /** @var ObjectSchemaInterface $collectionResponseSchema */
-        $collectionResponseSchema = $builder->create(ObjectSchemaInterface::class, [
-            new WithReturn('parse', [$collection], $queryAsArray),
+            new WithReturn('parse', [$queryAsArray], $collectionRequest),
         ]);
 
         /** @var ParsingInterface $parsing */
         $parsing = $builder->create(ParsingInterface::class, [
             new WithReturn('getCollectionRequestSchema', [$request], $collectionRequestSchema),
-            new WithReturn('getCollectionResponseSchema', [$request], $collectionResponseSchema),
         ]);
 
         /** @var RepositoryInterface $repository */

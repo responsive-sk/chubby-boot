@@ -1,0 +1,33 @@
+{
+  "extends": "@tsconfig/svelte/tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "isolatedModules": true,
+    "target": "ESNext",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "$lib": ["./frontend/src/lib"],
+      "$lib/*": ["./frontend/src/lib/*"],
+      "$components": ["./frontend/src/lib/components"],
+      "$components/*": ["./frontend/src/lib/components/*"],
+      "$stores": ["./frontend/src/lib/stores"],
+      "$stores/*": ["./frontend/src/lib/stores/*"],
+      "$utils": ["./frontend/src/lib/utils"],
+      "$utils/*": ["./frontend/src/lib/utils/*"],
+      "$pages": ["./frontend/src/pages"],
+      "$pages/*": ["./frontend/src/pages/*"]
+    }
+  },
+  "include": [
+    "frontend/src/**/*.ts",
+    "frontend/src/**/*.svelte",
+    "frontend/src/**/*.d.ts"
+  ]
+}
