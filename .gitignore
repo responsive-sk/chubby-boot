@@ -1,8 +1,23 @@
-.DS_Store
-.idea/
-.phpunit.cache
-.vscode/
-build/
+# Frontend / Node
+frontend/node_modules/
+frontend/dist/
+frontend/.svelte-kit/
+frontend/package-lock.json
+frontend/pnpm-lock.yaml
+frontend/.env
+frontend/.env.*
+frontend/*.log
+
+# PHP
+/vendor/
+/var/
 composer.lock
-var/
-vendor/
+
+# Systémové
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Docker
+docker-compose.override.yml

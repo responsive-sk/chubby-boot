@@ -10,9 +10,12 @@
 ├── frontend
 │   ├── src
 │   │   ├── components
-│   │   │   └── layout
-│   │   │       ├── Header.svelte
-│   │   │       └── Hero.svelte
+│   │   │   ├── layout
+│   │   │   │   ├── Header.svelte
+│   │   │   │   ├── Hero.svelte
+│   │   │   │   └── SearchModal.svelte
+│   │   │   ├── Hero.svelte
+│   │   │   └── SimpleHero.svelte
 │   │   ├── core
 │   │   │   └── ComponentRegistry.ts
 │   │   ├── pages
@@ -146,7 +149,6 @@
 │   │   ├── cool-index.html.twig
 │   │   ├── hero.html.twig
 │   │   ├── home-page.html.twig
-│   │   ├── home-page.twig
 │   │   ├── products.html.twig
 │   │   └── test-frontend.html.twig
 │   ├── error
@@ -258,6 +260,7 @@
 ├── infection.json
 ├── LICENSE
 ├── openapi.yml
+├── petstore.tar
 ├── .phpactor.json
 ├── .php-cs-fixer.php
 ├── phpstan.neon
@@ -267,4 +270,4 @@
 ├── sonar-project.properties
 └── TODO.md
 
-80 directories, 188 files
+80 directories, 191 files
