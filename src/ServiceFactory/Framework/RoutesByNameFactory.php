@@ -10,6 +10,8 @@ use App\RequestHandler\Api\Crud\DeleteRequestHandler as BaseDeleteRequestHandler
 use App\RequestHandler\Api\Crud\ListRequestHandler as BaseListRequestHandler;
 use App\RequestHandler\Api\Crud\ReadRequestHandler as BaseReadRequestHandler;
 use App\RequestHandler\Api\Crud\UpdateRequestHandler as BaseUpdateRequestHandler;
+use App\RequestHandler\ArticleListHtmlRequestHandler;
+use App\RequestHandler\HomePageRequestHandler;
 use App\RequestHandler\OpenapiRequestHandler;
 use App\RequestHandler\PingRequestHandler;
 use Chubbyphp\Framework\Middleware\LazyMiddleware;
@@ -28,7 +30,7 @@ final class RoutesByNameFactory
     {
         $ping = new LazyRequestHandler($container, PingRequestHandler::class);
         $openApi = new LazyRequestHandler($container, OpenapiRequestHandler::class);
-        $articleListHtml = new LazyRequestHandler($container, \App\RequestHandler\ArticleListHtmlRequestHandler::class);
+        $articleListHtml = new LazyRequestHandler($container, ArticleListHtmlRequestHandler::class);
 
         $accept = new LazyMiddleware($container, AcceptMiddleware::class);
         $contentType = new LazyMiddleware($container, ContentTypeMiddleware::class);
@@ -40,9 +42,11 @@ final class RoutesByNameFactory
         $articleUpdate = new LazyRequestHandler($container, BaseUpdateRequestHandler::class);
         $articleDelete = new LazyRequestHandler($container, BaseDeleteRequestHandler::class);
 
+        $homePage = new LazyRequestHandler($container, HomePageRequestHandler::class);
+
         return new RoutesByName(
             Group::create('', [
-                Route::get('/', 'home', new \App\RequestHandler\HomePageRequestHandler($container->get(\Mezzio\Template\TemplateRendererInterface::class))),
+                Route::get('/', 'home', $homePage),
                 Route::get('/ping', 'ping', $ping),
                 Route::get('/openapi', 'openapi', $openApi),
                 Route::get('/articles/list', 'articleListHtml', $articleListHtml),

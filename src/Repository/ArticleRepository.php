@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Collection\CollectionInterface;
 use App\Collection\ArticleCollection;
-use App\Model\ModelInterface;
+use App\Collection\CollectionInterface;
 use App\Model\Article;
-use Doctrine\ORM\EntityManager;
+use App\Model\ModelInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 
 final class ArticleRepository implements RepositoryInterface
 {
-    public function __construct(private EntityManager $entityManager) {}
+    public function __construct(private EntityManagerInterface $entityManager) {}
 
     /**
-     * @param CollectionInterface|ArticleCollection $articleCollection
+     * @param ArticleCollection|CollectionInterface $articleCollection
      */
     public function resolveCollection(CollectionInterface $articleCollection): void
     {
@@ -31,7 +31,7 @@ final class ArticleRepository implements RepositoryInterface
             );
         }
 
-        /** @var EntityRepository $entityRepository */
+        /** @var EntityRepository<Article> $entityRepository */
         $entityRepository = $this->entityManager->getRepository(Article::class);
 
         $queryBuilder = $entityRepository->createQueryBuilder('a');

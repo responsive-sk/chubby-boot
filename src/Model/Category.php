@@ -6,21 +6,31 @@ namespace App\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
-final class Category implements ModelInterface
+#[ORM\Entity]
+#[ORM\Table(name: 'categories')]
+class Category implements ModelInterface
 {
+    #[ORM\Id]
+    #[ORM\Column(type: 'string', length: 36, unique: true)]
     private string $id;
 
+    #[ORM\Column(type: 'datetime_immutable')]
     private \DateTimeImmutable $createdAt;
 
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private ?\DateTimeImmutable $updatedAt;
 
+    #[ORM\Column(type: 'string', length: 255)]
     private string $name;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $image;
 
     /** @var Collection<int, Article> */
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Article::class)]
     private Collection $articles;
 
     public function __construct()
@@ -51,9 +61,13 @@ final class Category implements ModelInterface
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): void
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): void
     {
-        $this->updatedAt = $updatedAt;
+        if ($updatedAt instanceof \DateTimeImmutable) {
+            $this->updatedAt = $updatedAt;
+        } else {
+            $this->updatedAt = \DateTimeImmutable::createFromInterface($updatedAt);
+        }
     }
 
     public function getName(): string

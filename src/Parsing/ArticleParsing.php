@@ -11,7 +11,6 @@ use App\Dto\Collection\ArticleCollectionResponse;
 use App\Dto\Collection\ArticleCollectionSort;
 use App\Dto\Model\ArticleRequest;
 use App\Dto\Model\ArticleResponse;
-use App\Dto\Model\CategoryRequest;
 use App\Dto\Model\CategoryResponse;
 use Chubbyphp\Framework\Router\UrlGeneratorInterface;
 use Chubbyphp\Parsing\ParserInterface;

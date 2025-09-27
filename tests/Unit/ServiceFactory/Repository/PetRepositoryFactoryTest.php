@@ -8,7 +8,7 @@ use App\Repository\PetRepository;
 use App\ServiceFactory\Repository\PetRepositoryFactory;
 use Chubbyphp\Mock\MockMethod\WithReturn;
 use Chubbyphp\Mock\MockObjectBuilder;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 
@@ -23,12 +23,12 @@ final class PetRepositoryFactoryTest extends TestCase
     {
         $builder = new MockObjectBuilder();
 
-        /** @var EntityManager $entityManager */
-        $entityManager = $builder->create(EntityManager::class, []);
+        /** @var EntityManagerInterface $entityManager */
+        $entityManager = $builder->create(EntityManagerInterface::class, []);
 
         /** @var ContainerInterface $container */
         $container = $builder->create(ContainerInterface::class, [
-            new WithReturn('get', [EntityManager::class], $entityManager),
+            new WithReturn('get', [EntityManagerInterface::class], $entityManager),
         ]);
 
         $factory = new PetRepositoryFactory();

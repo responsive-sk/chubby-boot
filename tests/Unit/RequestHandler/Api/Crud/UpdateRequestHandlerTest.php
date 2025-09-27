@@ -136,8 +136,20 @@ final class UpdateRequestHandlerTest extends TestCase
             new WithReturn('__toString', [], $inputAsJson),
         ]);
 
+        $uri = new class {
+            public function getPath() { return '/api/pets/cbb6bd79-b6a9-4b07-9d8b-f6be0f19aaa0'; }
+            public function getQuery() { return ''; }
+        };
+
         /** @var ServerRequestInterface $request */
         $request = $builder->create(ServerRequestInterface::class, [
+            new WithReturn('getMethod', [], 'PUT'),
+            new WithReturn('getRequestTarget', [], '/api/pets/cbb6bd79-b6a9-4b07-9d8b-f6be0f19aaa0'),
+            new WithReturn('getUri', [], $uri),
+            new WithReturn('getHeaderLine', ['Content-Type'], 'application/json'),
+            new WithReturn('getProtocolVersion', [], '1.1'),
+            new WithReturn('getHeaders', [], ['Content-Type' => ['application/json']]),
+            new WithReturn('hasHeader', ['Content-Type'], true),
             new WithReturn('getAttribute', ['id', null], 'cbb6bd79-b6a9-4b07-9d8b-f6be0f19aaa0'),
             new WithReturn('getAttribute', ['accept', null], 'application/json'),
             new WithReturn('getAttribute', ['contentType', null], 'application/json'),
@@ -216,8 +228,20 @@ final class UpdateRequestHandlerTest extends TestCase
             new WithReturn('write', [$inputAsJson], \strlen($inputAsJson)),
         ]);
 
+        $uri = new class {
+            public function getPath() { return '/api/pets/cbb6bd79-b6a9-4b07-9d8b-f6be0f19aaa0'; }
+            public function getQuery() { return ''; }
+        };
+
         /** @var ServerRequestInterface $request */
         $request = $builder->create(ServerRequestInterface::class, [
+            new WithReturn('getMethod', [], 'PUT'),
+            new WithReturn('getRequestTarget', [], '/api/pets/cbb6bd79-b6a9-4b07-9d8b-f6be0f19aaa0'),
+            new WithReturn('getUri', [], $uri),
+            new WithReturn('getHeaderLine', ['Content-Type'], 'application/json'),
+            new WithReturn('getProtocolVersion', [], '1.1'),
+            new WithReturn('getHeaders', [], ['Content-Type' => ['application/json']]),
+            new WithReturn('hasHeader', ['Content-Type'], true),
             new WithReturn('getAttribute', ['id', null], 'cbb6bd79-b6a9-4b07-9d8b-f6be0f19aaa0'),
             new WithReturn('getAttribute', ['accept', null], 'application/json'),
             new WithReturn('getAttribute', ['contentType', null], 'application/json'),

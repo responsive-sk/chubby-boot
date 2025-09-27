@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Ramsey\Uuid\Uuid;
 
-final class Pet implements ModelInterface
+class Pet implements ModelInterface
 {
     private string $id;
 

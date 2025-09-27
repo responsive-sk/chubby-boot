@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Repository;
 
 use App\Collection\CollectionInterface;
 use App\Collection\PetCollection;
+use App\Dto\Collection\CollectionRequestInterface;
 use App\Model\ModelInterface;
 use App\Model\Pet;
 use App\Repository\PetRepository;
@@ -15,6 +16,7 @@ use Chubbyphp\Mock\MockMethod\WithReturnSelf;
 use Chubbyphp\Mock\MockObjectBuilder;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Query\Expr;
@@ -35,16 +37,17 @@ final class PetRepositoryTest extends TestCase
     {
         $builder = new MockObjectBuilder();
 
-        /** @var CollectionInterface $collection */
-        $collection = $builder->create(CollectionInterface::class, []);
+        /** @var CollectionRequestInterface $collection */
+        $collection = $builder->create(CollectionRequestInterface::class, []);
 
         $this->expectException(\TypeError::class);
         $this->expectExceptionMessage(
-            'App\Repository\PetRepository::resolveCollection() expects parameter 1 to be App\Collection\PetCollection'
+            'App\Repository\PetRepository::resolveCollection() expects parameter 1 to be App\Dto\Collection\PetCollectionRequest, '
+            .'Chubbyphp\Mock\MockObject\MockObject given'
         );
 
-        /** @var EntityManager $entityManager */
-        $entityManager = $builder->create(EntityManager::class, []);
+        /** @var EntityManagerInterface $entityManager */
+        $entityManager = $builder->create(EntityManagerInterface::class, []);
 
         $repository = new PetRepository($entityManager);
         $repository->resolveCollection($collection);
@@ -150,8 +153,8 @@ final class PetRepositoryTest extends TestCase
             )
         );
 
-        /** @var EntityManager $entityManager */
-        $entityManager = $builder->create(EntityManager::class, []);
+        /** @var EntityManagerInterface $entityManager */
+        $entityManager = $builder->create(EntityManagerInterface::class, []);
 
         $repository = new PetRepository($entityManager);
         $repository->persist($model);
@@ -164,8 +167,8 @@ final class PetRepositoryTest extends TestCase
 
         $builder = new MockObjectBuilder();
 
-        /** @var EntityManager $entityManager */
-        $entityManager = $builder->create(EntityManager::class, [
+        /** @var EntityManagerInterface $entityManager */
+        $entityManager = $builder->create(EntityManagerInterface::class, [
             new WithoutReturn('persist', [$pet]),
         ]);
 

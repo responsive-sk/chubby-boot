@@ -8,12 +8,12 @@ use App\Collection\CollectionInterface;
 use App\Collection\PetCollection;
 use App\Model\ModelInterface;
 use App\Model\Pet;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 
 final class PetRepository implements RepositoryInterface
 {
-    public function __construct(private EntityManager $entityManager) {}
+    public function __construct(private EntityManagerInterface $entityManager) {}
 
     /**
      * @param CollectionInterface|PetCollection $petCollection

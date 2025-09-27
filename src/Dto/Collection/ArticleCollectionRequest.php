@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Dto\Collection;
 
-use App\Collection\CollectionInterface;
 use App\Collection\ArticleCollection;
+use App\Collection\CollectionInterface;
 
 final class ArticleCollectionRequest implements CollectionRequestInterface
 {

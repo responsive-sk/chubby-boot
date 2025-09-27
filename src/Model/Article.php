@@ -4,24 +4,37 @@ declare(strict_types=1);
 
 namespace App\Model;
 
+use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
-final class Article implements ModelInterface
+#[ORM\Entity]
+#[ORM\Table(name: 'articles')]
+class Article implements ModelInterface
 {
+    #[ORM\Id]
+    #[ORM\Column(type: 'string', length: 36, unique: true)]
     private string $id;
 
-    private \DateTimeImmutable $createdAt;
+    #[ORM\Column(type: 'datetime_immutable')]
+    private \DateTimeInterface $createdAt;
 
-    private ?\DateTimeImmutable $updatedAt;
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    private ?\DateTimeInterface $updatedAt;
 
+    #[ORM\Column(type: 'string', length: 255)]
     private string $title;
 
+    #[ORM\Column(type: 'text')]
     private string $content;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $tag;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $image;
 
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'articles')]
+    #[ORM\JoinColumn(name: 'category_id', referencedColumnName: 'id')]
     private ?Category $category;
 
     public function __construct()
@@ -36,17 +49,17 @@ final class Article implements ModelInterface
         return $this->id;
     }
 
-    public function getCreatedAt(): \DateTimeImmutable
+    public function getCreatedAt(): \DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function getUpdatedAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTimeImmutable $updatedAt): void
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
@@ -104,13 +117,17 @@ final class Article implements ModelInterface
     /**
      * @return array{
      *  id: string,
-     *  createdAt: \DateTimeImmutable,
-     *  updatedAt: null|\DateTimeImmutable,
+     *  createdAt: \DateTimeInterface,
+     *  updatedAt: ?\DateTimeInterface,
      *  title: string,
      *  content: string,
-     *  tag: null|string,
-     *  image: null|string,
-     *  category: null|array{id: string, name: string}
+     *  tag: ?string,
+     *  image: ?string,
+     *  category: ?array{
+     *      id: string,
+     *      name: string,
+     *      image: ?string
+     *  }
      * }
      */
     public function jsonSerialize(): array
@@ -123,7 +140,11 @@ final class Article implements ModelInterface
             'content' => $this->content,
             'tag' => $this->tag,
             'image' => $this->image,
-            'category' => $this->category ? $this->category->jsonSerialize() : null,
+            'category' => $this->category ? [
+                'id' => $this->category->getId(),
+                'name' => $this->category->getName(),
+                'image' => $this->category->getImage()
+            ] : null,
         ];
     }
 }

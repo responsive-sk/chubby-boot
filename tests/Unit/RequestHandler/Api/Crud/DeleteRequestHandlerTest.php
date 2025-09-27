@@ -27,10 +27,20 @@ final class DeleteRequestHandlerTest extends TestCase
     {
         $builder = new MockObjectBuilder();
 
+        $uri = new class {
+            public function getPath() { return '/api/pets/1234'; }
+            public function getQuery() { return ''; }
+        };
+
         /** @var ServerRequestInterface $request */
         $request = $builder->create(ServerRequestInterface::class, [
+            new WithReturn('getMethod', [], 'DELETE'),
+            new WithReturn('getRequestTarget', [], '/api/pets/1234'),
+            new WithReturn('getUri', [], $uri),
+            new WithReturn('getHeaderLine', ['Content-Type'], 'application/json'),
             new WithReturn('getAttribute', ['id', null], '1234'),
             new WithReturn('getAttribute', ['accept', null], 'application/json'),
+            new WithReturn('getQueryParams', [], []),
         ]);
 
         /** @var RepositoryInterface $repository */
@@ -58,6 +68,8 @@ final class DeleteRequestHandlerTest extends TestCase
         $request = $builder->create(ServerRequestInterface::class, [
             new WithReturn('getAttribute', ['id', null], 'cbb6bd79-b6a9-4b07-9d8b-f6be0f19aaa0'),
             new WithReturn('getAttribute', ['accept', null], 'application/json'),
+            new WithReturn('getQueryParams', [], []),
+            new WithReturn('getMethod', [], 'DELETE'),
         ]);
 
         /** @var RepositoryInterface $repository */
@@ -87,10 +99,13 @@ final class DeleteRequestHandlerTest extends TestCase
         $request = $builder->create(ServerRequestInterface::class, [
             new WithReturn('getAttribute', ['id', null], 'cbb6bd79-b6a9-4b07-9d8b-f6be0f19aaa0'),
             new WithReturn('getAttribute', ['accept', null], 'application/json'),
+            new WithReturn('getQueryParams', [], []),
+            new WithReturn('getMethod', [], 'DELETE'),
         ]);
 
         /** @var ResponseInterface $response */
         $response = $builder->create(ResponseInterface::class, [
+            new WithReturn('getStatusCode', [], 204),
             new WithReturnSelf('withHeader', ['Content-Type', 'application/json']),
         ]);
 

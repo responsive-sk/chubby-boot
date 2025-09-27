@@ -15,9 +15,8 @@ final class ArticleDeleteRequestHandlerFactory
     public function __invoke(ContainerInterface $container): DeleteRequestHandler
     {
         return new DeleteRequestHandler(
-            $container->get(ArticleParsing::class),
             $container->get(ArticleRepository::class),
-            $container->get(ResponseFactoryInterface::class),
+            $container->get(ResponseFactoryInterface::class)
         );
     }
 }

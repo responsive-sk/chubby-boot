@@ -6,7 +6,7 @@ namespace App\Model;
 
 use Ramsey\Uuid\Uuid;
 
-final class Vaccination implements \JsonSerializable
+class Vaccination implements \JsonSerializable
 {
     private string $id;
 

@@ -14,10 +14,18 @@ use Doctrine\Persistence\Mapping\ClassMetadata;
 final class CategoryMapping implements ClassMapMappingInterface
 {
     /**
-     * @param ORMClassMetadata $metadata
+     * @param ClassMetadata<\App\Model\Category> $metadata
      */
     public function configureMapping(ClassMetadata $metadata): void
     {
+        if (!$metadata instanceof ORMClassMetadata) {
+            throw new \RuntimeException(sprintf(
+                'Expected metadata to be instance of %s, got %s',
+                ORMClassMetadata::class,
+                get_class($metadata)
+            ));
+        }
+        
         $builder = new ClassMetadataBuilder($metadata);
         $builder->setTable('categories');
         $builder->createField('id', Types::GUID)->makePrimaryKey()->build();

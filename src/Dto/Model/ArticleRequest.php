@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Dto\Model;
 
-use App\Model\ModelInterface;
 use App\Model\Article;
 use App\Model\Category;
+use App\Model\ModelInterface;
 
 final class ArticleRequest implements ModelRequestInterface
 {
@@ -28,7 +28,7 @@ final class ArticleRequest implements ModelRequestInterface
         $model->setTag($this->tag);
         $model->setImage($this->image);
 
-        if ($this->categoryId !== null) {
+        if (null !== $this->categoryId) {
             $category = new Category();
             $category->setId($this->categoryId);
             $model->setCategory($category);
@@ -37,9 +37,6 @@ final class ArticleRequest implements ModelRequestInterface
         return $model;
     }
 
-    /**
-     * @param ModelInterface $model
-     */
     public function updateModel(ModelInterface $model): ModelInterface
     {
         if (!$model instanceof Article) {
@@ -52,7 +49,7 @@ final class ArticleRequest implements ModelRequestInterface
         $model->setTag($this->tag);
         $model->setImage($this->image);
 
-        if ($this->categoryId !== null) {
+        if (null !== $this->categoryId) {
             $category = new Category();
             $category->setId($this->categoryId);
             $model->setCategory($category);

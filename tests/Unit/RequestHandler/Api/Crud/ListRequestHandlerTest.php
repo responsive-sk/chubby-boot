@@ -10,7 +10,6 @@ use App\Parsing\ParsingInterface;
 use App\Repository\RepositoryInterface;
 use App\RequestHandler\Api\Crud\ListRequestHandler;
 use Chubbyphp\DecodeEncode\Encoder\EncoderInterface;
-use Chubbyphp\HttpException\HttpExceptionInterface;
 use Chubbyphp\Mock\MockMethod\WithCallback;
 use Chubbyphp\Mock\MockMethod\WithException;
 use Chubbyphp\Mock\MockMethod\WithoutReturn;
@@ -44,17 +43,19 @@ final class ListRequestHandlerTest extends TestCase
 
         /** @var ServerRequestInterface $request */
         $request = $builder->create(ServerRequestInterface::class, [
-            new WithCallback('getAttribute', static function (string $name, mixed $default = null) {
-                if ($name === 'accept') {
-                    return 'application/json';
-                }
-                return $default;
-            }),
+            new WithReturn('getMethod', [], 'GET'),
+            new WithReturn('getAttribute', ['accept', null], 'application/json'),
             new WithReturn('getQueryParams', [], $queryAsArray),
+            new WithReturn('getRequestTarget', [], '/api/pets'),
+            new WithReturn('getUri', [], new class() {
+                public function getPath() { return '/api/pets'; }
+                public function getQuery() { return ''; }
+            }),
         ]);
 
         $collectionRequestSchema = $builder->create(ObjectSchemaInterface::class, [
             new WithException('parse', [$queryAsArray], $parserErrorException),
+            new WithReturn('getDefaults', [], []),
         ]);
 
         /** @var ParsingInterface $parsing */
@@ -102,12 +103,13 @@ final class ListRequestHandlerTest extends TestCase
 
         /** @var ServerRequestInterface $request */
         $request = $builder->create(ServerRequestInterface::class, [
+            new WithReturn('getMethod', [], 'GET'),
+            new WithReturn('getAttribute', ['accept', null], 'application/json'),
             new WithReturn('getQueryParams', [], $queryAsArray),
-            new WithCallback('getAttribute', static function (string $name, mixed $default = null) {
-                if ($name === 'accept') {
-                    return 'application/json';
-                }
-                return $default;
+            new WithReturn('getRequestTarget', [], '/api/pets'),
+            new WithReturn('getUri', [], new class() {
+                public function getPath() { return '/api/pets'; }
+                public function getQuery() { return ''; }
             }),
         ]);
 
@@ -115,6 +117,7 @@ final class ListRequestHandlerTest extends TestCase
         $response = $builder->create(ResponseInterface::class, [
             new WithReturn('getBody', [], $responseBody),
             new WithReturnSelf('withHeader', ['Content-Type', 'application/json']),
+            new WithReturn('getStatusCode', [], 200),
         ]);
 
         /** @var CollectionInterface $collection */
@@ -122,13 +125,26 @@ final class ListRequestHandlerTest extends TestCase
 
         /** @var CollectionRequestInterface $collectionRequest */
         $collectionRequest = $builder->create(CollectionRequestInterface::class, [
-            new WithCallback('toCollection', static fn() => $collection),
-            new WithCallback('toCollectionResponse', static fn() => $queryAsArray),
+            new WithCallback('toCollection', static fn () => $collection),
+            new WithCallback('toCollectionResponse', static fn () => $queryAsArray),
         ]);
 
         /** @var ObjectSchemaInterface $collectionRequestSchema */
         $collectionRequestSchema = $builder->create(ObjectSchemaInterface::class, [
             new WithReturn('parse', [$queryAsArray], $collectionRequest),
+            new WithReturn('getDefaults', [], []),
+        ]);
+
+        /** @var ServerRequestInterface $request */
+        $request = $builder->create(ServerRequestInterface::class, [
+            new WithReturn('getMethod', [], 'GET'),
+            new WithReturn('getAttribute', ['accept', null], 'application/json'),
+            new WithReturn('getQueryParams', [], $queryAsArray),
+            new WithReturn('getRequestTarget', [], '/api/pets'),
+            new WithReturn('getUri', [], new class() {
+                public function getPath() { return '/api/pets'; }
+                public function getQuery() { return ''; }
+            }),
         ]);
 
         /** @var ParsingInterface $parsing */

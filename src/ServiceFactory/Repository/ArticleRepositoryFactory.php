@@ -5,13 +5,21 @@ declare(strict_types=1);
 namespace App\ServiceFactory\Repository;
 
 use App\Repository\ArticleRepository;
-use Doctrine\ORM\EntityManager;
+use App\ServiceFactory\Doctrine\EntityManagerFactory;
+use Doctrine\ORM\EntityManagerInterface;
 use Psr\Container\ContainerInterface;
 
 final class ArticleRepositoryFactory
 {
     public function __invoke(ContainerInterface $container): ArticleRepository
     {
-        return new ArticleRepository($container->get(EntityManager::class));
+        $entityManager = $container->get(EntityManagerInterface::class);
+
+        // Ensure we have an EntityManager instance, not a factory
+        if ($entityManager instanceof EntityManagerFactory) {
+            $entityManager = $entityManager($container);
+        }
+
+        return new ArticleRepository($entityManager);
     }
 }

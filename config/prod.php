@@ -134,7 +134,10 @@ return [
             CorsMiddleware::class => CorsMiddlewareFactory::class,
             DecoderInterface::class => DecoderFactory::class,
             EncoderInterface::class => EncoderFactory::class,
-            EntityManagerInterface::class => EntityManagerFactory::class,
+            // Register EntityManager factory
+            EntityManagerInterface::class => [\App\ServiceFactory\Doctrine\EntityManagerFactory::class, 'create'],
+            // Alias for backward compatibility
+            'doctrine.entity_manager' => EntityManagerInterface::class,
             EntityManagerProvider::class => ContainerEntityManagerProviderFactory::class,
             ExceptionMiddleware::class => ExceptionMiddlewareFactory::class,
             LoggerInterface::class => LoggerFactory::class,
@@ -168,6 +171,7 @@ return [
                 $loader = new \Twig\Loader\FilesystemLoader($paths);
                 return new \Twig\Environment($loader);
             },
+            \App\RequestHandler\HomePageRequestHandler::class => \App\ServiceFactory\RequestHandler\HomePageRequestHandlerFactory::class,
         ],
     ],
     'directories' => [
@@ -188,16 +192,16 @@ return [
             ],
         ],
         'driver' => [
-            'classMap' => [
-                Pet::class => PetMapping::class,
-                Vaccination::class => VaccinationMapping::class,
-                Article::class => ArticleMapping::class,
-                Category::class => CategoryMapping::class,
+            'attribute' => [
+                'class' => 'Doctrine\ORM\Mapping\Driver\AttributeDriver',
+                'paths' => [
+                    __DIR__ . '/../src/Model',
+                ],
             ],
         ],
         'orm' => [
             'configuration' => [
-                'metadataDriverImpl' => MappingDriver::class,
+                'autoGenerateProxyClasses' => false,
                 'proxyDir' => $cacheDir . '/doctrine/orm/proxies',
                 'proxyNamespace' => 'DoctrineORMProxy',
                 'metadataCache' => CacheItemPoolInterface::class,

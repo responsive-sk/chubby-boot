@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orm;
 
+use App\Model\Article;
 use App\Model\Category;
 use Chubbyphp\Laminas\Config\Doctrine\Persistence\Mapping\Driver\ClassMapMappingInterface;
 use Doctrine\DBAL\Types\Types;
@@ -18,6 +19,14 @@ final class ArticleMapping implements ClassMapMappingInterface
      */
     public function configureMapping(ClassMetadata $metadata): void
     {
+        if (!$metadata instanceof ORMClassMetadata) {
+            throw new \RuntimeException(sprintf(
+                'Expected metadata to be instance of %s, got %s',
+                ORMClassMetadata::class,
+                get_class($metadata)
+            ));
+        }
+        
         $builder = new ClassMetadataBuilder($metadata);
         $builder->setTable('articles');
         $builder->createField('id', Types::GUID)->makePrimaryKey()->build();

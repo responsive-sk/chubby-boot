@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Dto\Model;
 
-use App\Model\ModelInterface;
 use App\Model\Category;
+use App\Model\ModelInterface;
 
 final class CategoryRequest implements ModelRequestInterface
 {

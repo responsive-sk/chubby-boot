@@ -33,16 +33,47 @@
         {# PRÁZDNY kontajner pre Svelte Hero - žiadny fallback content #}
         <div id="svelte-hero"></div>
         
+        {# Articles Section #}
+        <section class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-8">Latest Articles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {% for article in articles %}
+                        <div class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">{{ article.title }}</h3>
+                                <p class="text-gray-600 mb-4">{{ article.content|slice(0, 150) }}{% if article.content|length > 150 %}...{% endif %}</p>
+                                {% if article.category %}
+                                    <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+                                        {{ article.category.name }}
+                                    </span>
+                                {% endif %}
+                                {% if article.tag %}
+                                    <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full ml-2">
+                                        {{ article.tag }}
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="col-span-3 text-center py-8">
+                            <p class="text-gray-500">No articles found.</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        
         {# SEO content #}
-        <section class="seo-content">
-            <div class="container">
-                <h2>Why Choose Boson PHP?</h2>
-                <div class="features">
+        <section class="seo-content py-12 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-8">Why Choose Boson PHP?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {% for feature in features %}
-                        <div class="feature">
-                            <span class="icon">{{ feature.icon }}</span>
-                            <h3>{{ feature.title }}</h3>
-                            <p>{{ feature.description }}</p>
+                        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                            <span class="text-4xl mb-4 inline-block">{{ feature.icon }}</span>
+                            <h3 class="text-xl font-semibold mb-2">{{ feature.title }}</h3>
+                            <p class="text-gray-600">{{ feature.description }}</p>
                         </div>
                     {% endfor %}
                 </div>
