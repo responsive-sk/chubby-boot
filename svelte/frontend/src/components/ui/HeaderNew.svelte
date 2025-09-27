@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import { useToggle, useSearch, useClickOutside } from '$composables';
+  import type { HeaderProps, NavigationItem } from '$types/ui';
   import Logo from './Logo.svelte';
   import Navigation from './Navigation.svelte';
   import HeaderActions from './HeaderActions.svelte';
@@ -17,15 +17,21 @@
       { name: 'Download', href: '/download', route: 'download' },
       { name: 'About', href: '/about', route: 'about' }
     ]
-  } = $props();
+  }: HeaderProps = $props();
 
-  // Use composables for cleaner state management
-  const mobileMenu = useToggle(false);
-  const searchModal = useSearch(searchQuery);
-  const mobileMenuRef = useClickOutside(() => mobileMenu.setFalse());
+  let mobileMenuOpen = $state(false);
+  let searchOpen = $state(false);
 
-  function handleMobileMenuClose() {
-    mobileMenu.setFalse();
+  function toggleMobileMenu() {
+    mobileMenuOpen = !mobileMenuOpen;
+  }
+
+  function toggleSearch() {
+    searchOpen = !searchOpen;
+  }
+
+  function closeSearch() {
+    searchOpen = false;
   }
 
   function handleSearch(query: string) {
@@ -34,12 +40,27 @@
     }
   }
 
+  function handleMobileMenuClose() {
+    mobileMenuOpen = false;
+  }
+
   onMount(() => {
-    // The click outside handler is already set up by useClickOutside
+    // Close mobile menu when clicking outside
+    function handleClickOutside(event: MouseEvent) {
+      if (mobileMenuOpen && !(event.target as Element)?.closest('.mobile-menu-container')) {
+        mobileMenuOpen = false;
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
   });
 </script>
 
-<header class="header svelte-component" bind:this={mobileMenuRef.element}>
+<header class="header svelte-component">
   <div class="container">
     <!-- Logo -->
     <Logo />
@@ -49,26 +70,26 @@
 
     <!-- Search & Mobile Menu Actions -->
     <HeaderActions
-      mobileMenuOpen={mobileMenu.value}
-      onSearchToggle={searchModal.toggle}
-      onMobileMenuToggle={mobileMenu.toggle}
+      {mobileMenuOpen}
+      onSearchToggle={toggleSearch}
+      onMobileMenuToggle={toggleMobileMenu}
     />
   </div>
 
   <!-- Mobile Navigation -->
   <MobileMenu
-    isOpen={mobileMenu.value}
+    {isOpen: mobileMenuOpen}
     {navigation}
     {currentRoute}
     onClose={handleMobileMenuClose}
-    onNavClick={() => {}} <!-- Navigation handled by href -->
+    onNavClick={() => {}} <!-- Navigation handled by href */
   />
 
   <!-- Search Overlay -->
   <SearchForm
-    isOpen={searchModal.isOpen}
-    searchQuery={searchModal.query}
-    onClose={searchModal.close}
+    isOpen={searchOpen}
+    {searchQuery}
+    onClose={closeSearch}
     onSearch={handleSearch}
   />
 </header>
@@ -96,9 +117,10 @@
     align-items: center;
     justify-content: space-between;
   }
+
   @media (max-width: 768px) {
     .container {
-      padding: 0 1.5rem;
+      padding: 0 1rem;
     }
   }
 </style>

@@ -1,6 +1,6 @@
 import './styles/app.css';
 import { mount } from 'svelte';
-import Header from '$components/layout/Header.svelte';
+import Header from '$components/Header.svelte';
 import './core/ComponentRegistry';
 
 // Function to mount Header
