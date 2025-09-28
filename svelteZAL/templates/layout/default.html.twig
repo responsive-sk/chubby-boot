@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>{% block title %}Svelte + HTMX App{% endblock %}</title>
+  {# HTMX z CDN #}
+  {# <script src="https://unpkg.com/htmx.org@1.9.12"></script> #}
+  {# Vite assets #}
+{% block stylesheets %}
+{{ vite_entry_link_tags('frontend/src/app.ts') }}
+{% endblock %}
+</head>
+<body class="app font-sans antialiased bg-gray-900 text-white">
+  <header class="app-header">
+    <div id="nav-root"></div>
+  </header>
+  <div class="app-content">
+    <main class="mx-auto max-w-6xl">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  {% block scripts %}
+    {{ vite_entry_script_tags('frontend/src/app.ts') }}
+  {% endblock %}
+</body>
+</html>

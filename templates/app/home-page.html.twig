@@ -1,6 +1,6 @@
 {# templates/app/home-page.html.twig #}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
 <body>
     {# Server-rendered SEO content #}
     <header class="header">
-        <nav class="container">
+{#         <nav class="container">
             <div class="logo">
                 <a href="/">Boson PHP</a>
             </div>
@@ -26,7 +26,8 @@
                     </li>
                 {% endfor %}
             </ul>
-        </nav>
+        </nav> #}
+        <div id="svelte-header"></div>
     </header>
 
     <main class="main-content">
@@ -67,7 +68,7 @@
         {# SEO content #}
         <section class="seo-content py-12 bg-gray-50">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-8">Why Choose Boson PHP?</h2>
+                <h2 class="text-3xl font-bold text-center mb-8">Why Choose templates PHP?</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {% for feature in features %}
                         <div class="bg-white p-6 rounded-lg shadow-md text-center">

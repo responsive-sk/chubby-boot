@@ -5,14 +5,8 @@ declare(strict_types=1);
 use App\Middleware\ApiExceptionMiddleware;
 use App\Model\Article;
 use App\Model\Category;
-use App\Model\Pet;
-use App\Model\Vaccination;
 use App\Orm\ArticleMapping;
 use App\Orm\CategoryMapping;
-use App\Orm\PetMapping;
-use App\Orm\VaccinationMapping;
-use App\Parsing\PetParsing;
-use App\Repository\PetRepository;
 use App\RequestHandler\Api\Crud\CreateRequestHandler;
 use App\RequestHandler\Api\Crud\DeleteRequestHandler;
 use App\RequestHandler\Api\Crud\ListRequestHandler;
@@ -37,15 +31,8 @@ use App\ServiceFactory\Middleware\ApiExceptionMiddlewareFactory;
 use App\ServiceFactory\Negotiation\AcceptNegotiatorSupportedMediaTypesFactory;
 use App\ServiceFactory\Negotiation\ContentTypeNegotiatorSupportedMediaTypesFactory;
 use App\ServiceFactory\Parsing\ParserFactory;
-use App\ServiceFactory\Parsing\PetParsingFactory;
 use App\ServiceFactory\Parsing\ArticleParsingFactory;
-use App\ServiceFactory\Repository\PetRepositoryFactory;
 use App\ServiceFactory\Repository\ArticleRepositoryFactory;
-use App\ServiceFactory\RequestHandler\Api\Crud\PetCreateRequestHandlerFactory;
-use App\ServiceFactory\RequestHandler\Api\Crud\PetDeleteRequestHandlerFactory;
-use App\ServiceFactory\RequestHandler\Api\Crud\PetListRequestHandlerFactory;
-use App\ServiceFactory\RequestHandler\Api\Crud\PetReadRequestHandlerFactory;
-use App\ServiceFactory\RequestHandler\Api\Crud\PetUpdateRequestHandlerFactory;
 use App\ServiceFactory\RequestHandler\Api\Crud\ArticleCreateRequestHandlerFactory;
 use App\ServiceFactory\RequestHandler\Api\Crud\ArticleDeleteRequestHandlerFactory;
 use App\ServiceFactory\RequestHandler\Api\Crud\ArticleListRequestHandlerFactory;
@@ -99,7 +86,7 @@ use Mezzio\Twig\TwigRendererFactory;
 use Mezzio\Template\TemplateRendererInterface;
 
 $rootDir = \realpath(__DIR__ . '/..');
-$cacheDir = $rootDir . '/var/cache/' . $env;
+$cacheDir = $rootDir . '/var/cache/';
 $logDir = $rootDir . '/var/log';
 
 return [
@@ -150,9 +137,7 @@ return [
             ListRequestHandler::class => ArticleListRequestHandlerFactory::class,
             ReadRequestHandler::class => ArticleReadRequestHandlerFactory::class,
             UpdateRequestHandler::class => ArticleUpdateRequestHandlerFactory::class,
-            PetParsing::class => PetParsingFactory::class,
             ArticleParsing::class => ArticleParsingFactory::class,
-            PetRepository::class => PetRepositoryFactory::class,
             ArticleRepository::class => ArticleRepositoryFactory::class,
             ArticleListHtmlRequestHandler::class => ArticleListHtmlRequestHandlerFactory::class,
 
@@ -213,7 +198,7 @@ return [
     ],
     'monolog' => [
         'name' => 'petstore',
-        'path' => $logDir . '/' . $env . '.log',
+        'path' => $logDir . '/log',
         'level' => Level::Notice,
     ],
     'templates' => [

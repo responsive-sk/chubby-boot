@@ -1,7 +1,10 @@
 .
 ├── bin
-│   └── console -> ../src/console.php
+│   ├── console -> ../src/console.php
+│   ├── insert-test-article.php
+│   └── insert-test-data.php
 ├── config
+│   ├── container.php
 │   ├── dev.php
 │   ├── phpunit.php
 │   └── prod.php
@@ -10,75 +13,100 @@
 ├── frontend
 │   ├── src
 │   │   ├── components
+│   │   │   ├── islands
+│   │   │   │   ├── AddToCart.svelte
+│   │   │   │   └── Alert.svelte
 │   │   │   ├── layout
 │   │   │   │   ├── Header.svelte
 │   │   │   │   ├── Hero.svelte
-│   │   │   │   └── SearchModal.svelte
-│   │   │   ├── Hero.svelte
-│   │   │   └── SimpleHero.svelte
+│   │   │   │   └── TailwindHero.svelteZAL
+│   │   │   ├── sections
+│   │   │   ├── ui
+│   │   │   │   ├── ArticleCard.svelte
+│   │   │   │   ├── ArticleDetail.svelte
+│   │   │   │   ├── Footer.svelte
+│   │   │   │   ├── HeaderActions.svelte
+│   │   │   │   ├── HeaderNew.svelte
+│   │   │   │   ├── HeaderNew.svelteZAL
+│   │   │   │   ├── Header.svelte
+│   │   │   │   ├── Hero.svelte
+│   │   │   │   ├── Logo.svelte
+│   │   │   │   ├── MobileMenu.svelte
+│   │   │   │   ├── Navigation.svelte
+│   │   │   │   ├── Nav.svelte
+│   │   │   │   ├── SearchForm.svelte
+│   │   │   │   ├── SearchModal.svelte
+│   │   │   │   └── TailwindHero.svelte
+│   │   │   └── index.ts
+│   │   ├── composables
+│   │   │   └── index.ts
 │   │   ├── core
-│   │   │   └── ComponentRegistry.ts
+│   │   │   ├── boot.ts
+│   │   │   ├── ComponentRegistry.ts
+│   │   │   └── islands.ts
 │   │   ├── pages
-│   │   │   └── Index.svelte
+│   │   │   ├── App.svelte
+│   │   │   ├── CoolIndex.svelte
+│   │   │   └── Welcome.svelte
 │   │   ├── stores
+│   │   │   ├── app.store.ts
+│   │   │   ├── cart.store.ts
+│   │   │   ├── index.ts
+│   │   │   ├── ui.store.ts
+│   │   │   └── user.store.ts
 │   │   ├── styles
-│   │   │   └── app.css
+│   │   │   ├── app.css
+│   │   │   └── tailwind.css
 │   │   ├── types
+│   │   │   ├── app.d.ts
+│   │   │   ├── global.d.ts
+│   │   │   ├── htmx.d.ts
+│   │   │   ├── ui.ts
+│   │   │   └── vite-env.d.ts
 │   │   ├── utils
+│   │   │   ├── api.ts
+│   │   │   ├── constants.ts
+│   │   │   ├── formatters.ts
+│   │   │   ├── htmx.utils.ts
+│   │   │   ├── index.ts
+│   │   │   └── validation.ts
 │   │   └── app.ts
 │   ├── package.json
-│   ├── pnpm-lock.yaml
 │   ├── svelte.config.js
 │   ├── tsconfig.json
 │   └── vite.config.js
-├── .qodo
 ├── src
 │   ├── Collection
 │   │   ├── AbstractCollection.php
 │   │   ├── ArticleCollection.php
-│   │   ├── CollectionInterface.php
-│   │   └── PetCollection.php
+│   │   └── CollectionInterface.php
 │   ├── Dto
 │   │   ├── Collection
 │   │   │   ├── ArticleCollectionFilters.php
 │   │   │   ├── ArticleCollectionRequest.php
 │   │   │   ├── ArticleCollectionResponse.php
 │   │   │   ├── ArticleCollectionSort.php
-│   │   │   ├── CollectionRequestInterface.php
-│   │   │   ├── PetCollectionFilters.php
-│   │   │   ├── PetCollectionRequest.php
-│   │   │   ├── PetCollectionResponse.php
-│   │   │   └── PetCollectionSort.php
+│   │   │   └── CollectionRequestInterface.php
 │   │   └── Model
 │   │       ├── ArticleRequest.php
 │   │       ├── ArticleResponse.php
 │   │       ├── CategoryRequest.php
 │   │       ├── CategoryResponse.php
-│   │       ├── ModelRequestInterface.php
-│   │       ├── PetRequest.php
-│   │       ├── PetResponse.php
-│   │       ├── VaccinationRequest.php
-│   │       └── VaccinationResponse.php
+│   │       └── ModelRequestInterface.php
 │   ├── Middleware
 │   │   └── ApiExceptionMiddleware.php
 │   ├── Model
 │   │   ├── Article.php
 │   │   ├── Category.php
-│   │   ├── ModelInterface.php
-│   │   ├── Pet.php
-│   │   └── Vaccination.php
+│   │   └── ModelInterface.php
 │   ├── Orm
 │   │   ├── ArticleMapping.php
-│   │   ├── CategoryMapping.php
-│   │   ├── PetMapping.php
-│   │   └── VaccinationMapping.php
+│   │   └── CategoryMapping.php
 │   ├── Parsing
 │   │   ├── ArticleParsing.php
-│   │   ├── ParsingInterface.php
-│   │   └── PetParsing.php
+│   │   └── ParsingInterface.php
 │   ├── Repository
 │   │   ├── ArticleRepository.php
-│   │   ├── PetRepository.php
 │   │   └── RepositoryInterface.php
 │   ├── RequestHandler
 │   │   ├── Api
@@ -98,6 +126,8 @@
 │   │   ├── DecodeEncode
 │   │   │   ├── TypeDecodersFactory.php
 │   │   │   └── TypeEncodersFactory.php
+│   │   ├── Doctrine
+│   │   │   └── EntityManagerFactory.php
 │   │   ├── Framework
 │   │   │   ├── ExceptionMiddlewareFactory.php
 │   │   │   ├── MiddlewaresFactory.php
@@ -117,11 +147,9 @@
 │   │   │   └── ContentTypeNegotiatorSupportedMediaTypesFactory.php
 │   │   ├── Parsing
 │   │   │   ├── ArticleParsingFactory.php
-│   │   │   ├── ParserFactory.php
-│   │   │   └── PetParsingFactory.php
+│   │   │   └── ParserFactory.php
 │   │   ├── Repository
-│   │   │   ├── ArticleRepositoryFactory.php
-│   │   │   └── PetRepositoryFactory.php
+│   │   │   └── ArticleRepositoryFactory.php
 │   │   └── RequestHandler
 │   │       ├── Api
 │   │       │   └── Crud
@@ -129,12 +157,7 @@
 │   │       │       ├── ArticleDeleteRequestHandlerFactory.php
 │   │       │       ├── ArticleListRequestHandlerFactory.php
 │   │       │       ├── ArticleReadRequestHandlerFactory.php
-│   │       │       ├── ArticleUpdateRequestHandlerFactory.php
-│   │       │       ├── PetCreateRequestHandlerFactory.php
-│   │       │       ├── PetDeleteRequestHandlerFactory.php
-│   │       │       ├── PetListRequestHandlerFactory.php
-│   │       │       ├── PetReadRequestHandlerFactory.php
-│   │       │       └── PetUpdateRequestHandlerFactory.php
+│   │       │       └── ArticleUpdateRequestHandlerFactory.php
 │   │       ├── ArticleListHtmlRequestHandlerFactory.php
 │   │       ├── HomePageRequestHandlerFactory.php
 │   │       ├── OpenapiRequestHandlerFactory.php
@@ -145,20 +168,14 @@
 │   └── web.php
 ├── templates
 │   ├── app
-│   │   ├── component-demo.html.twig
-│   │   ├── cool-index.html.twig
-│   │   ├── hero.html.twig
-│   │   ├── home-page.html.twig
-│   │   ├── products.html.twig
-│   │   └── test-frontend.html.twig
+│   │   └── home-page.html.twig
 │   ├── error
 │   │   ├── 404.html.twig
 │   │   ├── 404.twig
 │   │   ├── error.html.twig
 │   │   └── error.twig
 │   ├── layout
-│   │   ├── default.html.twig
-│   │   └── default.twig
+│   │   └── default.html.twig
 │   └── partials
 │       └── components.twig
 ├── tests
@@ -166,9 +183,9 @@
 │   │   └── AssertHelper.php
 │   ├── Integration
 │   │   ├── AbstractIntegrationTestCase.php
+│   │   ├── ArticleCrudRequestHandlerTest.php
 │   │   ├── CorsControllerTest.php
 │   │   ├── OpenapiRequestHandlerTest.php
-│   │   ├── PetCrudRequestHandlerTest.php
 │   │   └── PingRequestHandlerTest.php
 │   ├── Unit
 │   │   ├── Collection
@@ -190,9 +207,9 @@
 │   │   │   ├── PetMappingTest.php
 │   │   │   └── VaccinationMappingTest.php
 │   │   ├── Parsing
-│   │   │   └── PetParsingTest.php
+│   │   │   └── ArticleParsingTest.php
 │   │   ├── Repository
-│   │   │   └── PetRepositoryTest.php
+│   │   │   └── ArticleRepositoryTest.php
 │   │   ├── RequestHandler
 │   │   │   ├── Api
 │   │   │   │   └── Crud
@@ -227,27 +244,29 @@
 │   │       │   ├── AcceptNegotiatorSupportedMediaTypesFactoryTest.php
 │   │       │   └── ContentTypeNegotiatorSupportedMediaTypesFactoryTest.php
 │   │       ├── Parsing
-│   │       │   ├── ParserFactoryTest.php
-│   │       │   └── PetParsingFactoryTest.php
+│   │       │   ├── ArticleParsingFactoryTest.php
+│   │       │   └── ParserFactoryTest.php
 │   │       ├── Repository
-│   │       │   └── PetRepositoryFactoryTest.php
+│   │       │   └── ArticleRepositoryFactoryTest.php
 │   │       └── RequestHandler
 │   │           ├── Api
 │   │           │   └── Crud
-│   │           │       ├── PetCreateRequestHandlerFactoryTest.php
-│   │           │       ├── PetDeleteRequestHandlerFactoryTest.php
-│   │           │       ├── PetListRequestHandlerFactoryTest.php
-│   │           │       ├── PetReadRequestHandlerFactoryTest.php
-│   │           │       └── PetUpdateRequestHandlerFactoryTest.php
+│   │           │       ├── ArticleCreateRequestHandlerFactoryTest.php
+│   │           │       ├── ArticleDeleteRequestHandlerFactoryTest.php
+│   │           │       ├── ArticleListRequestHandlerFactoryTest.php
+│   │           │       ├── ArticleReadRequestHandlerFactoryTest.php
+│   │           │       └── ArticleUpdateRequestHandlerFactoryTest.php
 │   │           ├── OpenapiRequestHandlerFactoryTest.php
 │   │           └── PingRequestHandlerFactoryTest.php
 │   └── PhpServerExtension.php
 ├── var
 │   ├── cache
-│   │   ├── dev
-│   │   └── phpunit
+│   │   └── doctrine
+│   │       └── orm
+│   │           └── proxies
+│   │               └── __CG__AppModelCategory.php
 │   ├── log
-│   │   └── dev.log
+│   │   └── log
 │   └── articlestore.db
 ├── composer.json
 ├── composer.lock
@@ -260,7 +279,6 @@
 ├── infection.json
 ├── LICENSE
 ├── openapi.yml
-├── petstore.tar
 ├── .phpactor.json
 ├── .php-cs-fixer.php
 ├── phpstan.neon
@@ -268,6 +286,7 @@
 ├── phpunit.xml
 ├── README.md
 ├── sonar-project.properties
+├── test-factory.php
 └── TODO.md
 
-80 directories, 191 files
+85 directories, 205 files

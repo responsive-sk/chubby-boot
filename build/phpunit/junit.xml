@@ -1,82 +1,188 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="/home/dan/Desktop/09/petstore/phpunit.xml" tests="69" assertions="239" errors="6" failures="0" skipped="0" time="0.223227">
-    <testsuite name="Unit" tests="69" assertions="239" errors="6" failures="0" skipped="0" time="0.223227">
-      <testsuite name="App\Tests\Unit\RequestHandler\Api\Crud\DeleteRequestHandlerTest" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/DeleteRequestHandlerTest.php" tests="3" assertions="3" errors="1" failures="0" skipped="0" time="0.094594">
-        <testcase name="testCreateResourceNotFoundInvalidUuid" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/DeleteRequestHandlerTest.php" line="26" class="App\Tests\Unit\RequestHandler\Api\Crud\DeleteRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.DeleteRequestHandlerTest" assertions="1" time="0.080451"/>
-        <testcase name="testCreateResourceNotFoundMissingModel" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/DeleteRequestHandlerTest.php" line="55" class="App\Tests\Unit\RequestHandler\Api\Crud\DeleteRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.DeleteRequestHandlerTest" assertions="1" time="0.000746"/>
-        <testcase name="testSuccessful" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/DeleteRequestHandlerTest.php" line="86" class="App\Tests\Unit\RequestHandler\Api\Crud\DeleteRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.DeleteRequestHandlerTest" assertions="1" time="0.013397">
+  <testsuite name="/home/dan/Desktop/09/petstore/phpunit.xml" tests="69" assertions="173" errors="24" failures="1" skipped="0" time="0.181408">
+    <testsuite name="Unit" tests="69" assertions="173" errors="24" failures="1" skipped="0" time="0.181408">
+      <testsuite name="App\Tests\Unit\ServiceFactory\Framework\UrlGeneratorFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/UrlGeneratorFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.007448">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/UrlGeneratorFactoryTest.php" line="22" class="App\Tests\Unit\ServiceFactory\Framework\UrlGeneratorFactoryTest" classname="App.Tests.Unit.ServiceFactory.Framework.UrlGeneratorFactoryTest" assertions="1" time="0.007448"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\Dto\Model\PetRequestTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Model/PetRequestTest.php" tests="2" assertions="0" errors="2" failures="0" skipped="0" time="0.009472">
+        <testcase name="testUpdateModel" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Model/PetRequestTest.php" line="49" class="App\Tests\Unit\Dto\Model\PetRequestTest" classname="App.Tests.Unit.Dto.Model.PetRequestTest" assertions="0" time="0.008918">
+          <error type="Error">App\Tests\Unit\Dto\Model\PetRequestTest::testUpdateModel
+Error: Class "App\Dto\Model\VaccinationRequest" not found
+
+/home/dan/Desktop/09/petstore/tests/Unit/Dto/Model/PetRequestTest.php:51</error>
+        </testcase>
+        <testcase name="testCreateModel" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Model/PetRequestTest.php" line="20" class="App\Tests\Unit\Dto\Model\PetRequestTest" classname="App.Tests.Unit.Dto.Model.PetRequestTest" assertions="0" time="0.000554">
+          <error type="Error">App\Tests\Unit\Dto\Model\PetRequestTest::testCreateModel
+Error: Class "App\Dto\Model\VaccinationRequest" not found
+
+/home/dan/Desktop/09/petstore/tests/Unit/Dto/Model/PetRequestTest.php:22</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\Negotiation\AcceptNegotiatorSupportedMediaTypesFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Negotiation/AcceptNegotiatorSupportedMediaTypesFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000751">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Negotiation/AcceptNegotiatorSupportedMediaTypesFactoryTest.php" line="21" class="App\Tests\Unit\ServiceFactory\Negotiation\AcceptNegotiatorSupportedMediaTypesFactoryTest" classname="App.Tests.Unit.ServiceFactory.Negotiation.AcceptNegotiatorSupportedMediaTypesFactoryTest" assertions="1" time="0.000751"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\Http\StreamFactoryFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Http/StreamFactoryFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000808">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Http/StreamFactoryFactoryTest.php" line="20" class="App\Tests\Unit\ServiceFactory\Http\StreamFactoryFactoryTest" classname="App.Tests.Unit.ServiceFactory.Http.StreamFactoryFactoryTest" assertions="1" time="0.000808"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\Collection\PetCollectionTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Collection/PetCollectionTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.000544">
+        <testcase name="testGetSet" file="/home/dan/Desktop/09/petstore/tests/Unit/Collection/CollectionTest.php" line="22" class="App\Tests\Unit\Collection\PetCollectionTest" classname="App.Tests.Unit.Collection.PetCollectionTest" assertions="0" time="0.000544">
+          <error type="Error">App\Tests\Unit\Collection\PetCollectionTest::testGetSet
+Error: Class "App\Collection\PetCollection" not found
+
+/home/dan/Desktop/09/petstore/tests/Unit/Collection/PetCollectionTest.php:19
+/home/dan/Desktop/09/petstore/tests/Unit/Collection/CollectionTest.php:24</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\OpenapiRequestHandlerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/OpenapiRequestHandlerFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.042586">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/OpenapiRequestHandlerFactoryTest.php" line="23" class="App\Tests\Unit\ServiceFactory\RequestHandler\OpenapiRequestHandlerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.OpenapiRequestHandlerFactoryTest" assertions="1" time="0.042586"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\Parsing\ArticleParsingTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Parsing/ArticleParsingTest.php" tests="4" assertions="0" errors="4" failures="0" skipped="0" time="0.007144">
+        <testcase name="testGetModelRequestSchema" file="/home/dan/Desktop/09/petstore/tests/Unit/Parsing/ArticleParsingTest.php" line="309" class="App\Tests\Unit\Parsing\ArticleParsingTest" classname="App.Tests.Unit.Parsing.ArticleParsingTest" assertions="0" time="0.004968">
+          <error type="Error">App\Tests\Unit\Parsing\ArticleParsingTest::testGetModelRequestSchema
+Error: Class "App\Tests\Unit\Parsing\PetParsing" not found
+
+/home/dan/Desktop/09/petstore/tests/Unit/Parsing/ArticleParsingTest.php:321</error>
+        </testcase>
+        <testcase name="testGetCollectionResponseSchema" file="/home/dan/Desktop/09/petstore/tests/Unit/Parsing/ArticleParsingTest.php" line="71" class="App\Tests\Unit\Parsing\ArticleParsingTest" classname="App.Tests.Unit.Parsing.ArticleParsingTest" assertions="0" time="0.000560">
+          <error type="Error">App\Tests\Unit\Parsing\ArticleParsingTest::testGetCollectionResponseSchema
+Error: Class "App\Tests\Unit\Parsing\PetParsing" not found
+
+/home/dan/Desktop/09/petstore/tests/Unit/Parsing/ArticleParsingTest.php:134</error>
+        </testcase>
+        <testcase name="testGetModelResponseSchema" file="/home/dan/Desktop/09/petstore/tests/Unit/Parsing/ArticleParsingTest.php" line="405" class="App\Tests\Unit\Parsing\ArticleParsingTest" classname="App.Tests.Unit.Parsing.ArticleParsingTest" assertions="0" time="0.000514">
+          <error type="Error">App\Tests\Unit\Parsing\ArticleParsingTest::testGetModelResponseSchema
+Error: Class "App\Tests\Unit\Parsing\PetParsing" not found
+
+/home/dan/Desktop/09/petstore/tests/Unit/Parsing/ArticleParsingTest.php:433</error>
+        </testcase>
+        <testcase name="testGetCollectionRequestSchema" file="/home/dan/Desktop/09/petstore/tests/Unit/Parsing/ArticleParsingTest.php" line="25" class="App\Tests\Unit\Parsing\ArticleParsingTest" classname="App.Tests.Unit.Parsing.ArticleParsingTest" assertions="0" time="0.001103">
+          <error type="Error">App\Tests\Unit\Parsing\ArticleParsingTest::testGetCollectionRequestSchema
+Error: Class "App\Tests\Unit\Parsing\PetParsing" not found
+
+/home/dan/Desktop/09/petstore/tests/Unit/Parsing/ArticleParsingTest.php:37</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\Negotiation\ContentTypeNegotiatorSupportedMediaTypesFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Negotiation/ContentTypeNegotiatorSupportedMediaTypesFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000519">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Negotiation/ContentTypeNegotiatorSupportedMediaTypesFactoryTest.php" line="21" class="App\Tests\Unit\ServiceFactory\Negotiation\ContentTypeNegotiatorSupportedMediaTypesFactoryTest" classname="App.Tests.Unit.ServiceFactory.Negotiation.ContentTypeNegotiatorSupportedMediaTypesFactoryTest" assertions="1" time="0.000519"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\ArticleListRequestHandlerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/ArticleListRequestHandlerFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000981">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/ArticleListRequestHandlerFactoryTest.php" line="27" class="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\ArticleListRequestHandlerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.Api.Crud.ArticleListRequestHandlerFactoryTest" assertions="1" time="0.000981"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\ArticleUpdateRequestHandlerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/ArticleUpdateRequestHandlerFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000672">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/ArticleUpdateRequestHandlerFactoryTest.php" line="28" class="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\ArticleUpdateRequestHandlerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.Api.Crud.ArticleUpdateRequestHandlerFactoryTest" assertions="1" time="0.000672"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\RequestHandler\OpenapiRequestHandlerTest" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/OpenapiRequestHandlerTest.php" tests="1" assertions="3" errors="0" failures="0" skipped="0" time="0.002704">
+        <testcase name="testHandle" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/OpenapiRequestHandlerTest.php" line="26" class="App\Tests\Unit\RequestHandler\OpenapiRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.OpenapiRequestHandlerTest" assertions="3" time="0.002704"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\LoggerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Logger/LoggerFactoryTest.php" tests="1" assertions="9" errors="0" failures="0" skipped="0" time="0.005626">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Logger/LoggerFactoryTest.php" line="28" class="App\Tests\Unit\ServiceFactory\RequestHandler\LoggerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.LoggerFactoryTest" assertions="9" time="0.005626"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\Framework\MiddlewaresFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/MiddlewaresFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000999">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/MiddlewaresFactoryTest.php" line="23" class="App\Tests\Unit\ServiceFactory\Framework\MiddlewaresFactoryTest" classname="App.Tests.Unit.ServiceFactory.Framework.MiddlewaresFactoryTest" assertions="1" time="0.000999"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\Dto\Model\PetResponseTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Model/PetResponseTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.000688">
+        <testcase name="testCreateCollection" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Model/PetResponseTest.php" line="19" class="App\Tests\Unit\Dto\Model\PetResponseTest" classname="App.Tests.Unit.Dto.Model.PetResponseTest" assertions="0" time="0.000688">
+          <error type="Error">App\Tests\Unit\Dto\Model\PetResponseTest::testCreateCollection
+Error: Class "App\Dto\Model\VaccinationResponse" not found
+
+/home/dan/Desktop/09/petstore/tests/Unit/Dto/Model/PetResponseTest.php:21</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\DecodeEncode\TypeEncodersFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/DecodeEncode/TypeEncodersFactoryTest.php" tests="1" assertions="7" errors="0" failures="0" skipped="0" time="0.001782">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/DecodeEncode/TypeEncodersFactoryTest.php" line="24" class="App\Tests\Unit\ServiceFactory\DecodeEncode\TypeEncodersFactoryTest" classname="App.Tests.Unit.ServiceFactory.DecodeEncode.TypeEncodersFactoryTest" assertions="7" time="0.001782"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\Repository\ArticleRepositoryFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Repository/ArticleRepositoryFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.012345">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Repository/ArticleRepositoryFactoryTest.php" line="22" class="App\Tests\Unit\ServiceFactory\Repository\ArticleRepositoryFactoryTest" classname="App.Tests.Unit.ServiceFactory.Repository.ArticleRepositoryFactoryTest" assertions="1" time="0.012345"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\Collection\CollectionTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Collection/CollectionTest.php" tests="1" assertions="13" errors="0" failures="0" skipped="0" time="0.000843">
+        <testcase name="testGetSet" file="/home/dan/Desktop/09/petstore/tests/Unit/Collection/CollectionTest.php" line="22" class="App\Tests\Unit\Collection\CollectionTest" classname="App.Tests.Unit.Collection.CollectionTest" assertions="13" time="0.000843"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\Framework\RouteMatcherFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/RouteMatcherFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.001625">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/RouteMatcherFactoryTest.php" line="22" class="App\Tests\Unit\ServiceFactory\Framework\RouteMatcherFactoryTest" classname="App.Tests.Unit.ServiceFactory.Framework.RouteMatcherFactoryTest" assertions="1" time="0.001625"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\Middleware\ApiExceptionMiddlewareFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Middleware/ApiExceptionMiddlewareFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.003390">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Middleware/ApiExceptionMiddlewareFactoryTest.php" line="24" class="App\Tests\Unit\ServiceFactory\Middleware\ApiExceptionMiddlewareFactoryTest" classname="App.Tests.Unit.ServiceFactory.Middleware.ApiExceptionMiddlewareFactoryTest" assertions="1" time="0.003390"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\Middleware\ApiExceptionMiddlewareTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Middleware/ApiExceptionMiddlewareTest.php" tests="5" assertions="62" errors="0" failures="0" skipped="0" time="0.004770">
+        <testcase name="testWithDebugAndLoggerWithHttpExceptionAndWithAccept" file="/home/dan/Desktop/09/petstore/tests/Unit/Middleware/ApiExceptionMiddlewareTest.php" line="267" class="App\Tests\Unit\Middleware\ApiExceptionMiddlewareTest" classname="App.Tests.Unit.Middleware.ApiExceptionMiddlewareTest" assertions="18" time="0.002132"/>
+        <testcase name="testWithDebugAndLoggerWithoutException" file="/home/dan/Desktop/09/petstore/tests/Unit/Middleware/ApiExceptionMiddlewareTest.php" line="31" class="App\Tests\Unit\Middleware\ApiExceptionMiddlewareTest" classname="App.Tests.Unit.Middleware.ApiExceptionMiddlewareTest" assertions="1" time="0.000224"/>
+        <testcase name="testWithDebugAndLoggerWithExceptionAndWithAccept" file="/home/dan/Desktop/09/petstore/tests/Unit/Middleware/ApiExceptionMiddlewareTest.php" line="124" class="App\Tests\Unit\Middleware\ApiExceptionMiddlewareTest" classname="App.Tests.Unit.Middleware.ApiExceptionMiddlewareTest" assertions="19" time="0.000627"/>
+        <testcase name="testWithoutDebugAndLoggerWithExceptionAndWithAccept" file="/home/dan/Desktop/09/petstore/tests/Unit/Middleware/ApiExceptionMiddlewareTest.php" line="209" class="App\Tests\Unit\Middleware\ApiExceptionMiddlewareTest" classname="App.Tests.Unit.Middleware.ApiExceptionMiddlewareTest" assertions="8" time="0.001322"/>
+        <testcase name="testWithDebugAndLoggerWithExceptionAndWithoutAccept" file="/home/dan/Desktop/09/petstore/tests/Unit/Middleware/ApiExceptionMiddlewareTest.php" line="60" class="App\Tests\Unit\Middleware\ApiExceptionMiddlewareTest" classname="App.Tests.Unit.Middleware.ApiExceptionMiddlewareTest" assertions="16" time="0.000465"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\Repository\ArticleRepositoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/ArticleRepositoryTest.php" tests="8" assertions="7" errors="1" failures="1" skipped="0" time="0.037392">
+        <testcase name="testRemove" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/ArticleRepositoryTest.php" line="204" class="App\Tests\Unit\Repository\ArticleRepositoryTest" classname="App.Tests.Unit.Repository.ArticleRepositoryTest" assertions="0" time="0.011177"/>
+        <testcase name="testRemoveWithWrongModel" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/ArticleRepositoryTest.php" line="179" class="App\Tests\Unit\Repository\ArticleRepositoryTest" classname="App.Tests.Unit.Repository.ArticleRepositoryTest" assertions="2" time="0.000729"/>
+        <testcase name="testResolveCollectionWithWrongCollection" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/ArticleRepositoryTest.php" line="36" class="App\Tests\Unit\Repository\ArticleRepositoryTest" classname="App.Tests.Unit.Repository.ArticleRepositoryTest" assertions="2" time="0.001242">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">App\Tests\Unit\Repository\ArticleRepositoryTest::testResolveCollectionWithWrongCollection
+Failed asserting that exception message 'App\Repository\ArticleRepository::resolveCollection(): Argument #1 ($articleCollection) must be of type App\Collection\CollectionInterface, App_Dto_Collection_CollectionRequestInterface_Mock given, called in /home/dan/Desktop/09/petstore/tests/Unit/Repository/ArticleRepositoryTest.php on line 53' contains 'App\Repository\ArticleRepository::resolveCollection() expects parameter 1 to be App\Dto\Collection\ArticleCollectionRequest, Chubbyphp\Mock\MockObject\MockObject given'.</failure>
+        </testcase>
+        <testcase name="testResolveCollection" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/ArticleRepositoryTest.php" line="57" class="App\Tests\Unit\Repository\ArticleRepositoryTest" classname="App.Tests.Unit.Repository.ArticleRepositoryTest" assertions="0" time="0.023223">
+          <error type="Chubbyphp\Mock\Exceptions\ParameterMismatch">App\Tests\Unit\Repository\ArticleRepositoryTest::testResolveCollection
+Chubbyphp\Mock\Exceptions\ParameterMismatch: {
+    "in": "(project)\/tests\/Unit\/Repository\/ArticleRepositoryTest.php:110",
+    "class": "Doctrine\\ORM\\EntityRepository",
+    "index": 0,
+    "methodName": "createQueryBuilder",
+    "parameterIndex": 0,
+    "actualParameter": "a",
+    "expectedParameter": "p",
+    "strict": true
+}
+
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethod/WithoutReturn.php:83
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethod/WithoutReturn.php:40
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethod/WithReturn.php:34
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethods.php:45
+/home/dan/Desktop/09/petstore/src/Repository/ArticleRepository.php:37
+/home/dan/Desktop/09/petstore/tests/Unit/Repository/ArticleRepositoryTest.php:120</error>
+        </testcase>
+        <testcase name="testPersist" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/ArticleRepositoryTest.php" line="164" class="App\Tests\Unit\Repository\ArticleRepositoryTest" classname="App.Tests.Unit.Repository.ArticleRepositoryTest" assertions="0" time="0.000275"/>
+        <testcase name="testFindById" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/ArticleRepositoryTest.php" line="123" class="App\Tests\Unit\Repository\ArticleRepositoryTest" classname="App.Tests.Unit.Repository.ArticleRepositoryTest" assertions="1" time="0.000204"/>
+        <testcase name="testFlush" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/ArticleRepositoryTest.php" line="220" class="App\Tests\Unit\Repository\ArticleRepositoryTest" classname="App.Tests.Unit.Repository.ArticleRepositoryTest" assertions="0" time="0.000180"/>
+        <testcase name="testPersistWithWrongModel" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/ArticleRepositoryTest.php" line="139" class="App\Tests\Unit\Repository\ArticleRepositoryTest" classname="App.Tests.Unit.Repository.ArticleRepositoryTest" assertions="2" time="0.000362"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\RequestHandler\Api\Crud\DeleteRequestHandlerTest" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/DeleteRequestHandlerTest.php" tests="3" assertions="1" errors="2" failures="0" skipped="0" time="0.003434">
+        <testcase name="testCreateResourceNotFoundMissingModel" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/DeleteRequestHandlerTest.php" line="63" class="App\Tests\Unit\RequestHandler\Api\Crud\DeleteRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.DeleteRequestHandlerTest" assertions="1" time="0.000651"/>
+        <testcase name="testCreateResourceNotFoundInvalidUuid" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/DeleteRequestHandlerTest.php" line="26" class="App\Tests\Unit\RequestHandler\Api\Crud\DeleteRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.DeleteRequestHandlerTest" assertions="0" time="0.000991">
+          <error type="Chubbyphp\Mock\Exceptions\MethodNameMismatch">App\Tests\Unit\RequestHandler\Api\Crud\DeleteRequestHandlerTest::testCreateResourceNotFoundInvalidUuid
+Chubbyphp\Mock\Exceptions\MethodNameMismatch: {
+    "in": "(project)\/tests\/Unit\/RequestHandler\/Api\/Crud\/DeleteRequestHandlerTest.php:36",
+    "class": "Psr\\Http\\Message\\ServerRequestInterface",
+    "index": 0,
+    "actualName": "getAttribute",
+    "expectedName": "getMethod"
+}
+
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethod/WithoutReturn.php:31
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethod/WithReturn.php:34
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethods.php:45
+/home/dan/Desktop/09/petstore/src/RequestHandler/Api/Crud/DeleteRequestHandler.php:24
+/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/DeleteRequestHandlerTest.php:55</error>
+        </testcase>
+        <testcase name="testSuccessful" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/DeleteRequestHandlerTest.php" line="94" class="App\Tests\Unit\RequestHandler\Api\Crud\DeleteRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.DeleteRequestHandlerTest" assertions="0" time="0.001792">
           <error type="Chubbyphp\Mock\Exceptions\AdditionalMethodMocks">App\Tests\Unit\RequestHandler\Api\Crud\DeleteRequestHandlerTest::testSuccessful
 Chubbyphp\Mock\Exceptions\AdditionalMethodMocks: {
-    "in": "(project)\/tests\/Unit\/RequestHandler\/Api\/Crud\/DeleteRequestHandlerTest.php:91",
-    "class": "Psr\\Http\\Message\\ServerRequestInterface",
-    "actualIndex": 1,
-    "expectedIndex": 3
+    "in": "(project)\/tests\/Unit\/Repository\/ArticleRepositoryTest.php:89",
+    "class": "Doctrine\\ORM\\Query",
+    "actualIndex": -1,
+    "expectedIndex": 0
 }
 
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethods.php:28</error>
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethods.php:28
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethod/WithoutReturn.php:36
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethod/WithReturn.php:34
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethods.php:45
+/home/dan/Desktop/09/petstore/src/RequestHandler/Api/Crud/DeleteRequestHandler.php:34
+/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/DeleteRequestHandlerTest.php:129</error>
         </testcase>
       </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\PetDeleteRequestHandlerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/PetDeleteRequestHandlerFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000798">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/PetDeleteRequestHandlerFactoryTest.php" line="24" class="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\PetDeleteRequestHandlerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.Api.Crud.PetDeleteRequestHandlerFactoryTest" assertions="1" time="0.000798"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Framework\MiddlewaresFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/MiddlewaresFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.001014">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/MiddlewaresFactoryTest.php" line="23" class="App\Tests\Unit\ServiceFactory\Framework\MiddlewaresFactoryTest" classname="App.Tests.Unit.ServiceFactory.Framework.MiddlewaresFactoryTest" assertions="1" time="0.001014"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Framework\UrlGeneratorFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/UrlGeneratorFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.001375">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/UrlGeneratorFactoryTest.php" line="22" class="App\Tests\Unit\ServiceFactory\Framework\UrlGeneratorFactoryTest" classname="App.Tests.Unit.ServiceFactory.Framework.UrlGeneratorFactoryTest" assertions="1" time="0.001375"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\RequestHandler\Api\Crud\ReadRequestHandlerTest" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ReadRequestHandlerTest.php" tests="3" assertions="5" errors="0" failures="0" skipped="0" time="0.004576">
-        <testcase name="testResourceNotFoundInvalidUuid" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ReadRequestHandlerTest.php" line="30" class="App\Tests\Unit\RequestHandler\Api\Crud\ReadRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.ReadRequestHandlerTest" assertions="2" time="0.001076"/>
-        <testcase name="testSuccessful" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ReadRequestHandlerTest.php" line="110" class="App\Tests\Unit\RequestHandler\Api\Crud\ReadRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.ReadRequestHandlerTest" assertions="1" time="0.003071"/>
-        <testcase name="testResourceNotFoundMissingModel" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ReadRequestHandlerTest.php" line="69" class="App\Tests\Unit\RequestHandler\Api\Crud\ReadRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.ReadRequestHandlerTest" assertions="2" time="0.000429"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Http\ResponseFactoryFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Http/ResponseFactoryFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000505">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Http/ResponseFactoryFactoryTest.php" line="20" class="App\Tests\Unit\ServiceFactory\Http\ResponseFactoryFactoryTest" classname="App.Tests.Unit.ServiceFactory.Http.ResponseFactoryFactoryTest" assertions="1" time="0.000505"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\PetCreateRequestHandlerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/PetCreateRequestHandlerFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000840">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/PetCreateRequestHandlerFactoryTest.php" line="28" class="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\PetCreateRequestHandlerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.Api.Crud.PetCreateRequestHandlerFactoryTest" assertions="1" time="0.000840"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\Dto\Model\PetRequestTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Model/PetRequestTest.php" tests="2" assertions="14" errors="0" failures="0" skipped="0" time="0.003509">
-        <testcase name="testCreateModel" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Model/PetRequestTest.php" line="20" class="App\Tests\Unit\Dto\Model\PetRequestTest" classname="App.Tests.Unit.Dto.Model.PetRequestTest" assertions="7" time="0.003210"/>
-        <testcase name="testUpdateModel" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Model/PetRequestTest.php" line="49" class="App\Tests\Unit\Dto\Model\PetRequestTest" classname="App.Tests.Unit.Dto.Model.PetRequestTest" assertions="7" time="0.000299"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\LoggerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Logger/LoggerFactoryTest.php" tests="1" assertions="9" errors="0" failures="0" skipped="0" time="0.006187">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Logger/LoggerFactoryTest.php" line="28" class="App\Tests\Unit\ServiceFactory\RequestHandler\LoggerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.LoggerFactoryTest" assertions="9" time="0.006187"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Http\StreamFactoryFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Http/StreamFactoryFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000738">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Http/StreamFactoryFactoryTest.php" line="20" class="App\Tests\Unit\ServiceFactory\Http\StreamFactoryFactoryTest" classname="App.Tests.Unit.ServiceFactory.Http.StreamFactoryFactoryTest" assertions="1" time="0.000738"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\PingRequestHandlerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/PingRequestHandlerFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000653">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/PingRequestHandlerFactoryTest.php" line="22" class="App\Tests\Unit\ServiceFactory\RequestHandler\PingRequestHandlerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.PingRequestHandlerFactoryTest" assertions="1" time="0.000653"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\Dto\Model\PetResponseTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Model/PetResponseTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000609">
-        <testcase name="testCreateCollection" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Model/PetResponseTest.php" line="19" class="App\Tests\Unit\Dto\Model\PetResponseTest" classname="App.Tests.Unit.Dto.Model.PetResponseTest" assertions="1" time="0.000609"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\DecodeEncode\TypeEncodersFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/DecodeEncode/TypeEncodersFactoryTest.php" tests="1" assertions="7" errors="0" failures="0" skipped="0" time="0.002045">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/DecodeEncode/TypeEncodersFactoryTest.php" line="24" class="App\Tests\Unit\ServiceFactory\DecodeEncode\TypeEncodersFactoryTest" classname="App.Tests.Unit.ServiceFactory.DecodeEncode.TypeEncodersFactoryTest" assertions="7" time="0.002045"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\Collection\CollectionTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Collection/CollectionTest.php" tests="1" assertions="13" errors="0" failures="0" skipped="0" time="0.000713">
-        <testcase name="testGetSet" file="/home/dan/Desktop/09/petstore/tests/Unit/Collection/CollectionTest.php" line="22" class="App\Tests\Unit\Collection\CollectionTest" classname="App.Tests.Unit.Collection.CollectionTest" assertions="13" time="0.000713"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\Dto\Collection\PetCollectionRequestTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Collection/PetCollectionRequestTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.001819">
-        <testcase name="testCreateCollection" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Collection/PetCollectionRequestTest.php" line="22" class="App\Tests\Unit\Dto\Collection\PetCollectionRequestTest" classname="App.Tests.Unit.Dto.Collection.PetCollectionRequestTest" assertions="2" time="0.001819"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\Model\PetTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Model/PetTest.php" tests="1" assertions="17" errors="0" failures="0" skipped="0" time="0.000457">
-        <testcase name="testGetSet" file="/home/dan/Desktop/09/petstore/tests/Unit/Model/PetTest.php" line="20" class="App\Tests\Unit\Model\PetTest" classname="App.Tests.Unit.Model.PetTest" assertions="17" time="0.000457"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Framework\ExceptionMiddlewareFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/ExceptionMiddlewareFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.004712">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/ExceptionMiddlewareFactoryTest.php" line="23" class="App\Tests\Unit\ServiceFactory\Framework\ExceptionMiddlewareFactoryTest" classname="App.Tests.Unit.ServiceFactory.Framework.ExceptionMiddlewareFactoryTest" assertions="1" time="0.004712"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Framework\RoutesByNameFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/RoutesByNameFactoryTest.php" tests="1" assertions="15" errors="0" failures="0" skipped="0" time="0.003997">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/RoutesByNameFactoryTest.php" line="32" class="App\Tests\Unit\ServiceFactory\Framework\RoutesByNameFactoryTest" classname="App.Tests.Unit.ServiceFactory.Framework.RoutesByNameFactoryTest" assertions="15" time="0.003997"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\RequestHandler\Api\Crud\UpdateRequestHandlerTest" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/UpdateRequestHandlerTest.php" tests="4" assertions="4" errors="1" failures="0" skipped="0" time="0.007225">
-        <testcase name="testResourceNotFoundInvalidUuid" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/UpdateRequestHandlerTest.php" line="34" class="App\Tests\Unit\RequestHandler\Api\Crud\UpdateRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.UpdateRequestHandlerTest" assertions="1" time="0.001448"/>
-        <testcase name="testWithParsingError" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/UpdateRequestHandlerTest.php" line="123" class="App\Tests\Unit\RequestHandler\Api\Crud\UpdateRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.UpdateRequestHandlerTest" assertions="0" time="0.003646">
-          <error type="Chubbyphp\Mock\Exceptions\AdditionalMethodMocks">App\Tests\Unit\RequestHandler\Api\Crud\UpdateRequestHandlerTest::testWithParsingError
+      <testsuite name="App\Tests\Unit\Model\VaccinationTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Model/VaccinationTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.000853">
+        <testcase name="testGetSet" file="/home/dan/Desktop/09/petstore/tests/Unit/Model/VaccinationTest.php" line="19" class="App\Tests\Unit\Model\VaccinationTest" classname="App.Tests.Unit.Model.VaccinationTest" assertions="0" time="0.000853">
+          <error type="Chubbyphp\Mock\Exceptions\AdditionalMethodMocks">App\Tests\Unit\Model\VaccinationTest::testGetSet
 Chubbyphp\Mock\Exceptions\AdditionalMethodMocks: {
-    "in": "(project)\/tests\/Unit\/RequestHandler\/Api\/Crud\/DeleteRequestHandlerTest.php:60",
+    "in": "(project)\/tests\/Unit\/RequestHandler\/Api\/Crud\/DeleteRequestHandlerTest.php:68",
     "class": "Psr\\Http\\Message\\ServerRequestInterface",
     "actualIndex": 1,
     "expectedIndex": 3
@@ -84,165 +190,184 @@ Chubbyphp\Mock\Exceptions\AdditionalMethodMocks: {
 
 /home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethods.php:28</error>
         </testcase>
-        <testcase name="testResourceNotFoundMissingModel" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/UpdateRequestHandlerTest.php" line="77" class="App\Tests\Unit\RequestHandler\Api\Crud\UpdateRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.UpdateRequestHandlerTest" assertions="2" time="0.000855"/>
-        <testcase name="testSuccessful" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/UpdateRequestHandlerTest.php" line="200" class="App\Tests\Unit\RequestHandler\Api\Crud\UpdateRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.UpdateRequestHandlerTest" assertions="1" time="0.001277"/>
       </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\PetUpdateRequestHandlerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/PetUpdateRequestHandlerFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000927">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/PetUpdateRequestHandlerFactoryTest.php" line="28" class="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\PetUpdateRequestHandlerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.Api.Crud.PetUpdateRequestHandlerFactoryTest" assertions="1" time="0.000927"/>
+      <testsuite name="App\Tests\Unit\Dto\Collection\PetCollectionRequestTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Collection/PetCollectionRequestTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.000512">
+        <testcase name="testCreateCollection" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Collection/PetCollectionRequestTest.php" line="22" class="App\Tests\Unit\Dto\Collection\PetCollectionRequestTest" classname="App.Tests.Unit.Dto.Collection.PetCollectionRequestTest" assertions="0" time="0.000512">
+          <error type="Error">App\Tests\Unit\Dto\Collection\PetCollectionRequestTest::testCreateCollection
+Error: Class "App\Dto\Collection\PetCollectionFilters" not found
+
+/home/dan/Desktop/09/petstore/tests/Unit/Dto/Collection/PetCollectionRequestTest.php:24</error>
+        </testcase>
       </testsuite>
-      <testsuite name="App\Tests\Unit\RequestHandler\PingRequestHandlerTest" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/PingRequestHandlerTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.000756">
-        <testcase name="testHandle" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/PingRequestHandlerTest.php" line="25" class="App\Tests\Unit\RequestHandler\PingRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.PingRequestHandlerTest" assertions="2" time="0.000756"/>
+      <testsuite name="App\Tests\Unit\ServiceFactory\Command\CommandsFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Command/CommandsFactoryTest.php" tests="1" assertions="20" errors="0" failures="0" skipped="0" time="0.007818">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Command/CommandsFactoryTest.php" line="40" class="App\Tests\Unit\ServiceFactory\Command\CommandsFactoryTest" classname="App.Tests.Unit.ServiceFactory.Command.CommandsFactoryTest" assertions="20" time="0.007818"/>
       </testsuite>
-      <testsuite name="App\Tests\Unit\RequestHandler\Api\Crud\ListRequestHandlerTest" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ListRequestHandlerTest.php" tests="2" assertions="0" errors="2" failures="0" skipped="0" time="0.002589">
-        <testcase name="testWithParsingError" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ListRequestHandlerTest.php" line="34" class="App\Tests\Unit\RequestHandler\Api\Crud\ListRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.ListRequestHandlerTest" assertions="0" time="0.001490">
+      <testsuite name="App\Tests\Unit\ServiceFactory\DecodeEncode\TypeDecodersFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/DecodeEncode/TypeDecodersFactoryTest.php" tests="1" assertions="7" errors="0" failures="0" skipped="0" time="0.001403">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/DecodeEncode/TypeDecodersFactoryTest.php" line="21" class="App\Tests\Unit\ServiceFactory\DecodeEncode\TypeDecodersFactoryTest" classname="App.Tests.Unit.ServiceFactory.DecodeEncode.TypeDecodersFactoryTest" assertions="7" time="0.001403"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\Parsing\ParserFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Parsing/ParserFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000306">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Parsing/ParserFactoryTest.php" line="18" class="App\Tests\Unit\ServiceFactory\Parsing\ParserFactoryTest" classname="App.Tests.Unit.ServiceFactory.Parsing.ParserFactoryTest" assertions="1" time="0.000306"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\RequestHandler\Api\Crud\CreateRequestHandlerTest" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/CreateRequestHandlerTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.002944">
+        <testcase name="testSuccessful" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/CreateRequestHandlerTest.php" line="104" class="App\Tests\Unit\RequestHandler\Api\Crud\CreateRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.CreateRequestHandlerTest" assertions="1" time="0.001840"/>
+        <testcase name="testWithParsingError" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/CreateRequestHandlerTest.php" line="34" class="App\Tests\Unit\RequestHandler\Api\Crud\CreateRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.CreateRequestHandlerTest" assertions="1" time="0.001104"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\Orm\VaccinationMappingTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Orm/VaccinationMappingTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.002642">
+        <testcase name="testGetClass" file="/home/dan/Desktop/09/petstore/tests/Unit/Orm/VaccinationMappingTest.php" line="23" class="App\Tests\Unit\Orm\VaccinationMappingTest" classname="App.Tests.Unit.Orm.VaccinationMappingTest" assertions="0" time="0.002642">
+          <error type="Error">App\Tests\Unit\Orm\VaccinationMappingTest::testGetClass
+Error: Class "App\Orm\VaccinationMapping" not found
+
+/home/dan/Desktop/09/petstore/tests/Unit/Orm/VaccinationMappingTest.php:54</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\Framework\RouteMatcherMiddlewareFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/RouteMatcherMiddlewareFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000598">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/RouteMatcherMiddlewareFactoryTest.php" line="22" class="App\Tests\Unit\ServiceFactory\Framework\RouteMatcherMiddlewareFactoryTest" classname="App.Tests.Unit.ServiceFactory.Framework.RouteMatcherMiddlewareFactoryTest" assertions="1" time="0.000598"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\Framework\RoutesByNameFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/RoutesByNameFactoryTest.php" tests="1" assertions="15" errors="0" failures="0" skipped="0" time="0.002116">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/RoutesByNameFactoryTest.php" line="32" class="App\Tests\Unit\ServiceFactory\Framework\RoutesByNameFactoryTest" classname="App.Tests.Unit.ServiceFactory.Framework.RoutesByNameFactoryTest" assertions="15" time="0.002116"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\RequestHandler\Api\Crud\ReadRequestHandlerTest" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ReadRequestHandlerTest.php" tests="3" assertions="5" errors="0" failures="0" skipped="0" time="0.001110">
+        <testcase name="testSuccessful" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ReadRequestHandlerTest.php" line="110" class="App\Tests\Unit\RequestHandler\Api\Crud\ReadRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.ReadRequestHandlerTest" assertions="1" time="0.000522"/>
+        <testcase name="testResourceNotFoundMissingModel" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ReadRequestHandlerTest.php" line="69" class="App\Tests\Unit\RequestHandler\Api\Crud\ReadRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.ReadRequestHandlerTest" assertions="2" time="0.000347"/>
+        <testcase name="testResourceNotFoundInvalidUuid" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ReadRequestHandlerTest.php" line="30" class="App\Tests\Unit\RequestHandler\Api\Crud\ReadRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.ReadRequestHandlerTest" assertions="2" time="0.000241"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\RequestHandler\Api\Crud\UpdateRequestHandlerTest" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/UpdateRequestHandlerTest.php" tests="4" assertions="3" errors="2" failures="0" skipped="0" time="0.002233">
+        <testcase name="testResourceNotFoundInvalidUuid" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/UpdateRequestHandlerTest.php" line="34" class="App\Tests\Unit\RequestHandler\Api\Crud\UpdateRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.UpdateRequestHandlerTest" assertions="1" time="0.000261"/>
+        <testcase name="testWithParsingError" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/UpdateRequestHandlerTest.php" line="123" class="App\Tests\Unit\RequestHandler\Api\Crud\UpdateRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.UpdateRequestHandlerTest" assertions="0" time="0.000923">
+          <error type="Chubbyphp\Mock\Exceptions\MethodNameMismatch">App\Tests\Unit\RequestHandler\Api\Crud\UpdateRequestHandlerTest::testWithParsingError
+Chubbyphp\Mock\Exceptions\MethodNameMismatch: {
+    "in": "(project)\/tests\/Unit\/RequestHandler\/Api\/Crud\/UpdateRequestHandlerTest.php:145",
+    "class": "Psr\\Http\\Message\\ServerRequestInterface",
+    "index": 0,
+    "actualName": "getAttribute",
+    "expectedName": "getMethod"
+}
+
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethod/WithoutReturn.php:31
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethod/WithReturn.php:34
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethods.php:45
+/home/dan/Desktop/09/petstore/src/RequestHandler/Api/Crud/UpdateRequestHandler.php:32
+/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/UpdateRequestHandlerTest.php:197</error>
+        </testcase>
+        <testcase name="testResourceNotFoundMissingModel" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/UpdateRequestHandlerTest.php" line="77" class="App\Tests\Unit\RequestHandler\Api\Crud\UpdateRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.UpdateRequestHandlerTest" assertions="2" time="0.000255"/>
+        <testcase name="testSuccessful" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/UpdateRequestHandlerTest.php" line="212" class="App\Tests\Unit\RequestHandler\Api\Crud\UpdateRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.UpdateRequestHandlerTest" assertions="0" time="0.000794">
+          <error type="Chubbyphp\Mock\Exceptions\MethodNameMismatch">App\Tests\Unit\RequestHandler\Api\Crud\UpdateRequestHandlerTest::testSuccessful
+Chubbyphp\Mock\Exceptions\MethodNameMismatch: {
+    "in": "(project)\/tests\/Unit\/RequestHandler\/Api\/Crud\/UpdateRequestHandlerTest.php:237",
+    "class": "Psr\\Http\\Message\\ServerRequestInterface",
+    "index": 0,
+    "actualName": "getAttribute",
+    "expectedName": "getMethod"
+}
+
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethod/WithoutReturn.php:31
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethod/WithReturn.php:34
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethods.php:45
+/home/dan/Desktop/09/petstore/src/RequestHandler/Api/Crud/UpdateRequestHandler.php:32
+/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/UpdateRequestHandlerTest.php:311</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\ArticleDeleteRequestHandlerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/ArticleDeleteRequestHandlerFactoryTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.003384">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/ArticleDeleteRequestHandlerFactoryTest.php" line="24" class="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\ArticleDeleteRequestHandlerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.Api.Crud.ArticleDeleteRequestHandlerFactoryTest" assertions="0" time="0.003384">
+          <error type="Chubbyphp\Mock\Exceptions\AdditionalMethodMocks">App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\ArticleDeleteRequestHandlerFactoryTest::testInvoke
+Chubbyphp\Mock\Exceptions\AdditionalMethodMocks: {
+    "in": "(project)\/tests\/Unit\/RequestHandler\/Api\/Crud\/UpdateRequestHandlerTest.php:135",
+    "class": "Psr\\Http\\Message\\StreamInterface",
+    "actualIndex": -1,
+    "expectedIndex": 0
+}
+
+/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethods.php:28</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\RequestHandler\PingRequestHandlerTest" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/PingRequestHandlerTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.000441">
+        <testcase name="testHandle" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/PingRequestHandlerTest.php" line="25" class="App\Tests\Unit\RequestHandler\PingRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.PingRequestHandlerTest" assertions="2" time="0.000441"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\Dto\Collection\PetCollectionResponseTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Collection/PetCollectionResponseTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.000464">
+        <testcase name="testCreateCollection" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Collection/PetCollectionResponseTest.php" line="23" class="App\Tests\Unit\Dto\Collection\PetCollectionResponseTest" classname="App.Tests.Unit.Dto.Collection.PetCollectionResponseTest" assertions="0" time="0.000464">
+          <error type="Error">App\Tests\Unit\Dto\Collection\PetCollectionResponseTest::testCreateCollection
+Error: Class "App\Dto\Collection\PetCollectionFilters" not found
+
+/home/dan/Desktop/09/petstore/tests/Unit/Dto/Collection/PetCollectionResponseTest.php:25</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\Parsing\ArticleParsingFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Parsing/ArticleParsingFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.001926">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Parsing/ArticleParsingFactoryTest.php" line="23" class="App\Tests\Unit\ServiceFactory\Parsing\ArticleParsingFactoryTest" classname="App.Tests.Unit.ServiceFactory.Parsing.ArticleParsingFactoryTest" assertions="1" time="0.001926"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\Http\ResponseFactoryFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Http/ResponseFactoryFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000426">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Http/ResponseFactoryFactoryTest.php" line="20" class="App\Tests\Unit\ServiceFactory\Http\ResponseFactoryFactoryTest" classname="App.Tests.Unit.ServiceFactory.Http.ResponseFactoryFactoryTest" assertions="1" time="0.000426"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\ArticleCreateRequestHandlerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/ArticleCreateRequestHandlerFactoryTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.000909">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/ArticleCreateRequestHandlerFactoryTest.php" line="28" class="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\ArticleCreateRequestHandlerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.Api.Crud.ArticleCreateRequestHandlerFactoryTest" assertions="0" time="0.000909">
+          <error type="TypeError">App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\ArticleCreateRequestHandlerFactoryTest::testInvoke
+TypeError: App\RequestHandler\Api\Crud\CreateRequestHandler::__construct(): Argument #2 ($parsing) must be of type App\Parsing\ParsingInterface, null given, called in /home/dan/Desktop/09/petstore/src/ServiceFactory/RequestHandler/Api/Crud/ArticleCreateRequestHandlerFactory.php on line 19
+
+/home/dan/Desktop/09/petstore/src/RequestHandler/Api/Crud/CreateRequestHandler.php:21
+/home/dan/Desktop/09/petstore/src/ServiceFactory/RequestHandler/Api/Crud/ArticleCreateRequestHandlerFactory.php:19
+/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/ArticleCreateRequestHandlerFactoryTest.php:58</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\ArticleReadRequestHandlerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/ArticleReadRequestHandlerFactoryTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.000886">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/ArticleReadRequestHandlerFactoryTest.php" line="27" class="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\ArticleReadRequestHandlerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.Api.Crud.ArticleReadRequestHandlerFactoryTest" assertions="0" time="0.000886">
+          <error type="TypeError">App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\ArticleReadRequestHandlerFactoryTest::testInvoke
+TypeError: App\RequestHandler\Api\Crud\ReadRequestHandler::__construct(): Argument #1 ($parsing) must be of type App\Parsing\ParsingInterface, null given, called in /home/dan/Desktop/09/petstore/src/ServiceFactory/RequestHandler/Api/Crud/ArticleReadRequestHandlerFactory.php on line 18
+
+/home/dan/Desktop/09/petstore/src/RequestHandler/Api/Crud/ReadRequestHandler.php:19
+/home/dan/Desktop/09/petstore/src/ServiceFactory/RequestHandler/Api/Crud/ArticleReadRequestHandlerFactory.php:18
+/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/ArticleReadRequestHandlerFactoryTest.php:53</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\Orm\PetMappingTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Orm/PetMappingTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.000485">
+        <testcase name="testGetClass" file="/home/dan/Desktop/09/petstore/tests/Unit/Orm/PetMappingTest.php" line="23" class="App\Tests\Unit\Orm\PetMappingTest" classname="App.Tests.Unit.Orm.PetMappingTest" assertions="0" time="0.000485">
+          <error type="Error">App\Tests\Unit\Orm\PetMappingTest::testGetClass
+Error: Class "App\Orm\PetMapping" not found
+
+/home/dan/Desktop/09/petstore/tests/Unit/Orm/PetMappingTest.php:62</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\Model\PetTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Model/PetTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.000438">
+        <testcase name="testGetSet" file="/home/dan/Desktop/09/petstore/tests/Unit/Model/PetTest.php" line="20" class="App\Tests\Unit\Model\PetTest" classname="App.Tests.Unit.Model.PetTest" assertions="0" time="0.000438">
+          <error type="Error">App\Tests\Unit\Model\PetTest::testGetSet
+Error: Class "App\Model\Pet" not found
+
+/home/dan/Desktop/09/petstore/tests/Unit/Model/PetTest.php:22</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\PingRequestHandlerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/PingRequestHandlerFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000349">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/PingRequestHandlerFactoryTest.php" line="22" class="App\Tests\Unit\ServiceFactory\RequestHandler\PingRequestHandlerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.PingRequestHandlerFactoryTest" assertions="1" time="0.000349"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\ServiceFactory\Framework\ExceptionMiddlewareFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/ExceptionMiddlewareFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000865">
+        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/ExceptionMiddlewareFactoryTest.php" line="23" class="App\Tests\Unit\ServiceFactory\Framework\ExceptionMiddlewareFactoryTest" classname="App.Tests.Unit.ServiceFactory.Framework.ExceptionMiddlewareFactoryTest" assertions="1" time="0.000865"/>
+      </testsuite>
+      <testsuite name="App\Tests\Unit\RequestHandler\Api\Crud\ListRequestHandlerTest" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ListRequestHandlerTest.php" tests="2" assertions="0" errors="2" failures="0" skipped="0" time="0.001778">
+        <testcase name="testWithParsingError" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ListRequestHandlerTest.php" line="34" class="App\Tests\Unit\RequestHandler\Api\Crud\ListRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.ListRequestHandlerTest" assertions="0" time="0.000898">
           <error type="Chubbyphp\Mock\Exceptions\MethodNameMismatch">App\Tests\Unit\RequestHandler\Api\Crud\ListRequestHandlerTest::testWithParsingError
 Chubbyphp\Mock\Exceptions\MethodNameMismatch: {
     "in": "(project)\/tests\/Unit\/RequestHandler\/Api\/Crud\/ListRequestHandlerTest.php:45",
     "class": "Psr\\Http\\Message\\ServerRequestInterface",
     "index": 0,
     "actualName": "getQueryParams",
-    "expectedName": "getAttribute"
+    "expectedName": "getMethod"
 }
 
 /home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethod/WithoutReturn.php:31
 /home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethod/WithReturn.php:34
 /home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethods.php:45
 /home/dan/Desktop/09/petstore/src/RequestHandler/Api/Crud/ListRequestHandler.php:26
-/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ListRequestHandlerTest.php:78</error>
+/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ListRequestHandlerTest.php:83</error>
         </testcase>
-        <testcase name="testSuccessful" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ListRequestHandlerTest.php" line="85" class="App\Tests\Unit\RequestHandler\Api\Crud\ListRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.ListRequestHandlerTest" assertions="0" time="0.001100">
+        <testcase name="testSuccessful" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ListRequestHandlerTest.php" line="90" class="App\Tests\Unit\RequestHandler\Api\Crud\ListRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.ListRequestHandlerTest" assertions="0" time="0.000879">
           <error type="Chubbyphp\Mock\Exceptions\AdditionalMethodMocks">App\Tests\Unit\RequestHandler\Api\Crud\ListRequestHandlerTest::testSuccessful
 Chubbyphp\Mock\Exceptions\AdditionalMethodMocks: {
-    "in": "(project)\/tests\/Unit\/RequestHandler\/Api\/Crud\/ListRequestHandlerTest.php:100",
+    "in": "(project)\/tests\/Unit\/RequestHandler\/Api\/Crud\/ListRequestHandlerTest.php:105",
     "class": "Psr\\Http\\Message\\ServerRequestInterface",
     "actualIndex": -1,
-    "expectedIndex": 2
+    "expectedIndex": 4
 }
 
 /home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethods.php:28
-/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ListRequestHandlerTest.php:128</error>
+/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/ListRequestHandlerTest.php:139</error>
         </testcase>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\Model\VaccinationTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Model/VaccinationTest.php" tests="1" assertions="5" errors="0" failures="0" skipped="0" time="0.000247">
-        <testcase name="testGetSet" file="/home/dan/Desktop/09/petstore/tests/Unit/Model/VaccinationTest.php" line="19" class="App\Tests\Unit\Model\VaccinationTest" classname="App.Tests.Unit.Model.VaccinationTest" assertions="5" time="0.000247"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Negotiation\AcceptNegotiatorSupportedMediaTypesFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Negotiation/AcceptNegotiatorSupportedMediaTypesFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000427">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Negotiation/AcceptNegotiatorSupportedMediaTypesFactoryTest.php" line="21" class="App\Tests\Unit\ServiceFactory\Negotiation\AcceptNegotiatorSupportedMediaTypesFactoryTest" classname="App.Tests.Unit.ServiceFactory.Negotiation.AcceptNegotiatorSupportedMediaTypesFactoryTest" assertions="1" time="0.000427"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\Dto\Collection\PetCollectionResponseTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Collection/PetCollectionResponseTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000447">
-        <testcase name="testCreateCollection" file="/home/dan/Desktop/09/petstore/tests/Unit/Dto/Collection/PetCollectionResponseTest.php" line="23" class="App\Tests\Unit\Dto\Collection\PetCollectionResponseTest" classname="App.Tests.Unit.Dto.Collection.PetCollectionResponseTest" assertions="1" time="0.000447"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\Parsing\PetParsingTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Parsing/PetParsingTest.php" tests="4" assertions="7" errors="2" failures="0" skipped="0" time="0.012983">
-        <testcase name="testGetModelResponseSchema" file="/home/dan/Desktop/09/petstore/tests/Unit/Parsing/PetParsingTest.php" line="405" class="App\Tests\Unit\Parsing\PetParsingTest" classname="App.Tests.Unit.Parsing.PetParsingTest" assertions="1" time="0.006835"/>
-        <testcase name="testGetModelRequestSchema" file="/home/dan/Desktop/09/petstore/tests/Unit/Parsing/PetParsingTest.php" line="309" class="App\Tests\Unit\Parsing\PetParsingTest" classname="App.Tests.Unit.Parsing.PetParsingTest" assertions="4" time="0.001990">
-          <error type="Chubbyphp\Mock\Exceptions\AdditionalMethodMocks">App\Tests\Unit\Parsing\PetParsingTest::testGetModelRequestSchema
-Chubbyphp\Mock\Exceptions\AdditionalMethodMocks: {
-    "in": "(project)\/tests\/Unit\/RequestHandler\/Api\/Crud\/ListRequestHandlerTest.php:45",
-    "class": "Psr\\Http\\Message\\ServerRequestInterface",
-    "actualIndex": 0,
-    "expectedIndex": 2
-}
-
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethods.php:28
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/StringSchema.php:118
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/AbstractSchema.php:101
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/AbstractSchema.php:99
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/StringSchema.php:79
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/ObjectSchema.php:186
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/ObjectSchema.php:98
-/home/dan/Desktop/09/petstore/tests/Unit/Parsing/PetParsingTest.php:363</error>
-        </testcase>
-        <testcase name="testGetCollectionResponseSchema" file="/home/dan/Desktop/09/petstore/tests/Unit/Parsing/PetParsingTest.php" line="71" class="App\Tests\Unit\Parsing\PetParsingTest" classname="App.Tests.Unit.Parsing.PetParsingTest" assertions="2" time="0.001479"/>
-        <testcase name="testGetCollectionRequestSchema" file="/home/dan/Desktop/09/petstore/tests/Unit/Parsing/PetParsingTest.php" line="25" class="App\Tests\Unit\Parsing\PetParsingTest" classname="App.Tests.Unit.Parsing.PetParsingTest" assertions="0" time="0.002679">
-          <error type="Chubbyphp\Mock\Exceptions\AdditionalMethodMocks">App\Tests\Unit\Parsing\PetParsingTest::testGetCollectionRequestSchema
-Chubbyphp\Mock\Exceptions\AdditionalMethodMocks: {
-    "in": "(project)\/tests\/Unit\/RequestHandler\/Api\/Crud\/ListRequestHandlerTest.php:116",
-    "class": "App\\Dto\\Collection\\CollectionRequestInterface",
-    "actualIndex": -1,
-    "expectedIndex": 1
-}
-
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-mock/src/MockMethods.php:28
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/StringSchema.php:74
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/StringSchema.php:407
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/AbstractSchema.php:92
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/AbstractSchema.php:90
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/IntSchema.php:30
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/UnionSchema.php:64
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/UnionSchema.php:46
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/ObjectSchema.php:186
-/home/dan/Desktop/09/petstore/vendor/chubbyphp/chubbyphp-parsing/src/Schema/ObjectSchema.php:98
-/home/dan/Desktop/09/petstore/tests/Unit/Parsing/PetParsingTest.php:39</error>
-        </testcase>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\Repository\PetRepositoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/PetRepositoryTest.php" tests="8" assertions="7" errors="0" failures="0" skipped="0" time="0.038230">
-        <testcase name="testFindById" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/PetRepositoryTest.php" line="120" class="App\Tests\Unit\Repository\PetRepositoryTest" classname="App.Tests.Unit.Repository.PetRepositoryTest" assertions="1" time="0.014042"/>
-        <testcase name="testResolveCollectionWithWrongCollection" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/PetRepositoryTest.php" line="34" class="App\Tests\Unit\Repository\PetRepositoryTest" classname="App.Tests.Unit.Repository.PetRepositoryTest" assertions="2" time="0.000732"/>
-        <testcase name="testPersistWithWrongModel" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/PetRepositoryTest.php" line="136" class="App\Tests\Unit\Repository\PetRepositoryTest" classname="App.Tests.Unit.Repository.PetRepositoryTest" assertions="2" time="0.000323"/>
-        <testcase name="testRemove" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/PetRepositoryTest.php" line="201" class="App\Tests\Unit\Repository\PetRepositoryTest" classname="App.Tests.Unit.Repository.PetRepositoryTest" assertions="0" time="0.000209"/>
-        <testcase name="testPersist" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/PetRepositoryTest.php" line="161" class="App\Tests\Unit\Repository\PetRepositoryTest" classname="App.Tests.Unit.Repository.PetRepositoryTest" assertions="0" time="0.000198"/>
-        <testcase name="testResolveCollection" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/PetRepositoryTest.php" line="54" class="App\Tests\Unit\Repository\PetRepositoryTest" classname="App.Tests.Unit.Repository.PetRepositoryTest" assertions="0" time="0.021879"/>
-        <testcase name="testFlush" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/PetRepositoryTest.php" line="217" class="App\Tests\Unit\Repository\PetRepositoryTest" classname="App.Tests.Unit.Repository.PetRepositoryTest" assertions="0" time="0.000295"/>
-        <testcase name="testRemoveWithWrongModel" file="/home/dan/Desktop/09/petstore/tests/Unit/Repository/PetRepositoryTest.php" line="176" class="App\Tests\Unit\Repository\PetRepositoryTest" classname="App.Tests.Unit.Repository.PetRepositoryTest" assertions="2" time="0.000550"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\RequestHandler\OpenapiRequestHandlerTest" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/OpenapiRequestHandlerTest.php" tests="1" assertions="3" errors="0" failures="0" skipped="0" time="0.001569">
-        <testcase name="testHandle" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/OpenapiRequestHandlerTest.php" line="26" class="App\Tests\Unit\RequestHandler\OpenapiRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.OpenapiRequestHandlerTest" assertions="3" time="0.001569"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\PetListRequestHandlerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/PetListRequestHandlerFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000443">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/PetListRequestHandlerFactoryTest.php" line="27" class="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\PetListRequestHandlerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.Api.Crud.PetListRequestHandlerFactoryTest" assertions="1" time="0.000443"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\Orm\VaccinationMappingTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Orm/VaccinationMappingTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="0" time="0.004827">
-        <testcase name="testGetClass" file="/home/dan/Desktop/09/petstore/tests/Unit/Orm/VaccinationMappingTest.php" line="23" class="App\Tests\Unit\Orm\VaccinationMappingTest" classname="App.Tests.Unit.Orm.VaccinationMappingTest" assertions="0" time="0.004827"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\PetReadRequestHandlerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/PetReadRequestHandlerFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000453">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/Api/Crud/PetReadRequestHandlerFactoryTest.php" line="27" class="App\Tests\Unit\ServiceFactory\RequestHandler\Api\Crud\PetReadRequestHandlerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.Api.Crud.PetReadRequestHandlerFactoryTest" assertions="1" time="0.000453"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\RequestHandler\Api\Crud\CreateRequestHandlerTest" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/CreateRequestHandlerTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.000893">
-        <testcase name="testSuccessful" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/CreateRequestHandlerTest.php" line="104" class="App\Tests\Unit\RequestHandler\Api\Crud\CreateRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.CreateRequestHandlerTest" assertions="1" time="0.000338"/>
-        <testcase name="testWithParsingError" file="/home/dan/Desktop/09/petstore/tests/Unit/RequestHandler/Api/Crud/CreateRequestHandlerTest.php" line="34" class="App\Tests\Unit\RequestHandler\Api\Crud\CreateRequestHandlerTest" classname="App.Tests.Unit.RequestHandler.Api.Crud.CreateRequestHandlerTest" assertions="1" time="0.000555"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\Middleware\ApiExceptionMiddlewareTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Middleware/ApiExceptionMiddlewareTest.php" tests="5" assertions="62" errors="0" failures="0" skipped="0" time="0.003376">
-        <testcase name="testWithDebugAndLoggerWithoutException" file="/home/dan/Desktop/09/petstore/tests/Unit/Middleware/ApiExceptionMiddlewareTest.php" line="31" class="App\Tests\Unit\Middleware\ApiExceptionMiddlewareTest" classname="App.Tests.Unit.Middleware.ApiExceptionMiddlewareTest" assertions="1" time="0.000723"/>
-        <testcase name="testWithDebugAndLoggerWithHttpExceptionAndWithAccept" file="/home/dan/Desktop/09/petstore/tests/Unit/Middleware/ApiExceptionMiddlewareTest.php" line="267" class="App\Tests\Unit\Middleware\ApiExceptionMiddlewareTest" classname="App.Tests.Unit.Middleware.ApiExceptionMiddlewareTest" assertions="18" time="0.000499"/>
-        <testcase name="testWithoutDebugAndLoggerWithExceptionAndWithAccept" file="/home/dan/Desktop/09/petstore/tests/Unit/Middleware/ApiExceptionMiddlewareTest.php" line="209" class="App\Tests\Unit\Middleware\ApiExceptionMiddlewareTest" classname="App.Tests.Unit.Middleware.ApiExceptionMiddlewareTest" assertions="8" time="0.001105"/>
-        <testcase name="testWithDebugAndLoggerWithExceptionAndWithoutAccept" file="/home/dan/Desktop/09/petstore/tests/Unit/Middleware/ApiExceptionMiddlewareTest.php" line="60" class="App\Tests\Unit\Middleware\ApiExceptionMiddlewareTest" classname="App.Tests.Unit.Middleware.ApiExceptionMiddlewareTest" assertions="16" time="0.000522"/>
-        <testcase name="testWithDebugAndLoggerWithExceptionAndWithAccept" file="/home/dan/Desktop/09/petstore/tests/Unit/Middleware/ApiExceptionMiddlewareTest.php" line="124" class="App\Tests\Unit\Middleware\ApiExceptionMiddlewareTest" classname="App.Tests.Unit.Middleware.ApiExceptionMiddlewareTest" assertions="19" time="0.000526"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Middleware\ApiExceptionMiddlewareFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Middleware/ApiExceptionMiddlewareFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000559">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Middleware/ApiExceptionMiddlewareFactoryTest.php" line="24" class="App\Tests\Unit\ServiceFactory\Middleware\ApiExceptionMiddlewareFactoryTest" classname="App.Tests.Unit.ServiceFactory.Middleware.ApiExceptionMiddlewareFactoryTest" assertions="1" time="0.000559"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Framework\RouteMatcherMiddlewareFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/RouteMatcherMiddlewareFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000870">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/RouteMatcherMiddlewareFactoryTest.php" line="22" class="App\Tests\Unit\ServiceFactory\Framework\RouteMatcherMiddlewareFactoryTest" classname="App.Tests.Unit.ServiceFactory.Framework.RouteMatcherMiddlewareFactoryTest" assertions="1" time="0.000870"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Command\CommandsFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Command/CommandsFactoryTest.php" tests="1" assertions="20" errors="0" failures="0" skipped="0" time="0.008309">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Command/CommandsFactoryTest.php" line="40" class="App\Tests\Unit\ServiceFactory\Command\CommandsFactoryTest" classname="App.Tests.Unit.ServiceFactory.Command.CommandsFactoryTest" assertions="20" time="0.008309"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\Orm\PetMappingTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Orm/PetMappingTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="0" time="0.000612">
-        <testcase name="testGetClass" file="/home/dan/Desktop/09/petstore/tests/Unit/Orm/PetMappingTest.php" line="23" class="App\Tests\Unit\Orm\PetMappingTest" classname="App.Tests.Unit.Orm.PetMappingTest" assertions="0" time="0.000612"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Framework\RouteMatcherFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/RouteMatcherFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.001673">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Framework/RouteMatcherFactoryTest.php" line="22" class="App\Tests\Unit\ServiceFactory\Framework\RouteMatcherFactoryTest" classname="App.Tests.Unit.ServiceFactory.Framework.RouteMatcherFactoryTest" assertions="1" time="0.001673"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Parsing\PetParsingFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Parsing/PetParsingFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.001344">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Parsing/PetParsingFactoryTest.php" line="23" class="App\Tests\Unit\ServiceFactory\Parsing\PetParsingFactoryTest" classname="App.Tests.Unit.ServiceFactory.Parsing.PetParsingFactoryTest" assertions="1" time="0.001344"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\RequestHandler\OpenapiRequestHandlerFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/OpenapiRequestHandlerFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000409">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/RequestHandler/OpenapiRequestHandlerFactoryTest.php" line="23" class="App\Tests\Unit\ServiceFactory\RequestHandler\OpenapiRequestHandlerFactoryTest" classname="App.Tests.Unit.ServiceFactory.RequestHandler.OpenapiRequestHandlerFactoryTest" assertions="1" time="0.000409"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\Collection\PetCollectionTest" file="/home/dan/Desktop/09/petstore/tests/Unit/Collection/PetCollectionTest.php" tests="1" assertions="13" errors="0" failures="0" skipped="0" time="0.000225">
-        <testcase name="testGetSet" file="/home/dan/Desktop/09/petstore/tests/Unit/Collection/CollectionTest.php" line="22" class="App\Tests\Unit\Collection\PetCollectionTest" classname="App.Tests.Unit.Collection.PetCollectionTest" assertions="13" time="0.000225"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Repository\PetRepositoryFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Repository/PetRepositoryFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.002390">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Repository/PetRepositoryFactoryTest.php" line="22" class="App\Tests\Unit\ServiceFactory\Repository\PetRepositoryFactoryTest" classname="App.Tests.Unit.ServiceFactory.Repository.PetRepositoryFactoryTest" assertions="1" time="0.002390"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Negotiation\ContentTypeNegotiatorSupportedMediaTypesFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Negotiation/ContentTypeNegotiatorSupportedMediaTypesFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000427">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Negotiation/ContentTypeNegotiatorSupportedMediaTypesFactoryTest.php" line="21" class="App\Tests\Unit\ServiceFactory\Negotiation\ContentTypeNegotiatorSupportedMediaTypesFactoryTest" classname="App.Tests.Unit.ServiceFactory.Negotiation.ContentTypeNegotiatorSupportedMediaTypesFactoryTest" assertions="1" time="0.000427"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\Parsing\ParserFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Parsing/ParserFactoryTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000349">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/Parsing/ParserFactoryTest.php" line="18" class="App\Tests\Unit\ServiceFactory\Parsing\ParserFactoryTest" classname="App.Tests.Unit.ServiceFactory.Parsing.ParserFactoryTest" assertions="1" time="0.000349"/>
-      </testsuite>
-      <testsuite name="App\Tests\Unit\ServiceFactory\DecodeEncode\TypeDecodersFactoryTest" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/DecodeEncode/TypeDecodersFactoryTest.php" tests="1" assertions="7" errors="0" failures="0" skipped="0" time="0.001527">
-        <testcase name="testInvoke" file="/home/dan/Desktop/09/petstore/tests/Unit/ServiceFactory/DecodeEncode/TypeDecodersFactoryTest.php" line="21" class="App\Tests\Unit\ServiceFactory\DecodeEncode\TypeDecodersFactoryTest" classname="App.Tests.Unit.ServiceFactory.DecodeEncode.TypeDecodersFactoryTest" assertions="7" time="0.001527"/>
       </testsuite>
     </testsuite>
   </testsuite>

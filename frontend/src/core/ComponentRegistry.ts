@@ -10,16 +10,16 @@ export class ComponentRegistry {
   private static components: ComponentMap = {
     // Islands - Interactive components
     ...import.meta.glob('../components/islands/*.svelte'),
-
-    // UI - Presentational components
+    
+    // UI - Presentational components  
     ...import.meta.glob('../components/ui/*.svelte'),
-
+    
     // Layout - Structural components
     ...import.meta.glob('../components/layout/*.svelte'),
-
+    
     // Sections - Composite sections
     ...import.meta.glob('../components/sections/*.svelte'),
-
+    
     // Pages - Top-level views
     ...import.meta.glob('../pages/*.svelte'),
   };
@@ -29,10 +29,10 @@ export class ComponentRegistry {
    */
   static async initIslands(): Promise<void> {
     console.log('[ComponentRegistry] Initializing islands...');
-
+    
     const elements = document.querySelectorAll<HTMLElement>('[data-component]');
     console.log(`[ComponentRegistry] Found ${elements.length} components to mount`);
-
+    
     for (const element of elements) {
       await this.mountComponent(element);
     }
@@ -56,12 +56,12 @@ export class ComponentRegistry {
     try {
       const module = await loader();
       const props = element.dataset.props ? JSON.parse(element.dataset.props) : {};
-
+      
       mount(module.default, {
         target: element,
         props
       });
-
+      
       console.log(`[ComponentRegistry] Component "${componentName}" mounted successfully`);
     } catch (error) {
       console.error(`[ComponentRegistry] Failed to mount "${componentName}":`, error);
@@ -75,7 +75,7 @@ export class ComponentRegistry {
     // Try different path patterns
     const patterns = [
       `../components/islands/${name}.svelte`,
-      `../components/ui/${name}.svelte`,
+      `../components/ui/${name}.svelte`, 
       `../components/layout/${name}.svelte`,
       `../components/sections/${name}.svelte`,
       `../pages/${name}.svelte`
