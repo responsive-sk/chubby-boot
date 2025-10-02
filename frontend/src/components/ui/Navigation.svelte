@@ -1,14 +1,10 @@
 <script>
-  import type { NavigationItem } from '$types/ui';
-
-  interface Props {
-    navigation: NavigationItem[];
-    currentRoute: string;
-    isMobile?: boolean;
-    onNavClick?: (route: string) => void;
-  }
-
-  let { navigation, currentRoute, isMobile = false, onNavClick }: Props = $props();
+  let {
+    navigation = [],
+    currentRoute = '',
+    isMobile = false,
+    onNavClick = () => {}
+  } = $props();
 
   const baseClasses = isMobile
     ? 'mobile-nav'

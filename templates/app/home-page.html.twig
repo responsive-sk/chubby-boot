@@ -1,4 +1,3 @@
-{# templates/app/home-page.html.twig #}
 <!DOCTYPE html>
 <html lang="sk">
 <head>
@@ -6,35 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <meta name="description" content="{{ description }}">
-    
-    {# Svelte CSS #}
+    <meta name="csrf-token" content="{{ csrf_token }}">
     <link rel="stylesheet" href="/assets/app.css">
 </head>
 <body>
-    {# Server-rendered SEO content #}
+    <!-- Na začiatok body -->
+<!--     <div 
+      data-component="PageLoader" 
+      data-props='{
+        "message": "Preparing your experience...",
+        "showProgress": true
+      }'>
+    </div> -->
+    <!-- Server-rendered Header -->
     <header class="header">
-{#         <nav class="container">
+        <div class="container">
+            <div data-component="Logo"></div>
+            <!-- Logo -->
             <div class="logo">
-                <a href="/">Boson PHP</a>
+                <a href="/" class="logo-link">
+                    <span class="logo-text">Boson PHP</span>
+                </a>
             </div>
-            <ul class="nav-links">
+            <!-- Desktop Navigation - Server rendered -->
+            <nav class="desktop-nav">
                 {% for item in navigation %}
-                    <li>
-                        <a href="{{ item.href }}" class="{{ item.current ? 'active' : '' }}">
-                            {{ item.name }}
-                        </a>
-                    </li>
+                    <a href="{{ item.href }}" 
+                       class="nav-link {% if item.current %}active{% endif %}">
+                        {{ item.name }}
+                    </a>
                 {% endfor %}
-            </ul>
-        </nav> #}
-        <div id="svelte-header"></div>
+            </nav>
+
+            <!-- Interactive parts - Enhanced by Svelte -->
+            <div data-component="HeaderActions"></div>
+        </div>
+
+        <!-- Mobile Navigation - Enhanced by Svelte -->
+        <div data-component="MobileMenu" 
+             data-props="{{ {navigation: navigation}|json_encode|e('html_attr') }}">
+        </div>
+
+        <!-- Search Overlay - Enhanced by Svelte -->
+        <div data-component="SearchModal"></div>
     </header>
 
     <main class="main-content">
-        {# PRÁZDNY kontajner pre Svelte Hero - žiadny fallback content #}
-        <div id="svelte-hero"></div>
+
+
+<!--       <div 
+        data-component="HeroOverlay" 
+        data-props='{
+          "title": "Build Faster with Modern Stack",
+          "subtitle": "Combine PHP backend with Svelte frontend for optimal performance",
+          "ctaText": "Explore Features", 
+          "ctaLink": "/features"
+        }'
+      ></div> -->
+
+        <div 
+          data-component="Hero" 
+          data-props='{
+            "title": "Your Awesome Platform",
+            "subtitle": "Combining PHP power with Svelte elegance",
+            "ctaText": "Explore Now",
+            "ctaLink": "/features"
+          }'
+        ></div>
+
+        <!-- Server-rendered Hero -->
+
         
-        {# Articles Section #}
+        <!-- Articles Section - Server rendered -->
         <section class="py-12 bg-white">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold text-center mb-8">Latest Articles</h2>
@@ -64,25 +106,8 @@
                 </div>
             </div>
         </section>
-        
-        {# SEO content #}
-        <section class="seo-content py-12 bg-gray-50">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-8">Why Choose templates PHP?</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {% for feature in features %}
-                        <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                            <span class="text-4xl mb-4 inline-block">{{ feature.icon }}</span>
-                            <h3 class="text-xl font-semibold mb-2">{{ feature.title }}</h3>
-                            <p class="text-gray-600">{{ feature.description }}</p>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
     </main>
 
-    {# Svelte JS #}
     <script type="module" src="/assets/app.js"></script>
 </body>
 </html>

@@ -30,6 +30,15 @@ final class HomePageRequestHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        // Start session and generate CSRF token
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        
+        if (empty($_SESSION['csrf_token'])) {
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        }
+
         // Fetch articles
         $articleCollection = new ArticleCollection();
         $this->articleRepository->resolveCollection($articleCollection);
@@ -38,6 +47,7 @@ final class HomePageRequestHandler implements RequestHandlerInterface
         $data = [
             'title' => 'Boson PHP - Build Native Desktop Apps with PHP',
             'description' => 'Turn your PHP projects into cross-platform native applications for Windows, Linux and macOS.',
+            'csrf_token' => $_SESSION['csrf_token'], // CSRF token pre template
             'articles' => $articles,
             'navigation' => [
                 ['name' => 'Home', 'href' => '/', 'current' => true],

@@ -14,12 +14,14 @@
 │   ├── src
 │   │   ├── components
 │   │   │   ├── islands
-│   │   │   │   ├── AddToCart.svelte
-│   │   │   │   └── Alert.svelte
-│   │   │   ├── layout
-│   │   │   │   ├── Header.svelte
+│   │   │   │   ├── HeaderActions.svelte
+│   │   │   │   ├── HeroOverlay.svelte
 │   │   │   │   ├── Hero.svelte
-│   │   │   │   └── TailwindHero.svelteZAL
+│   │   │   │   ├── Logo.svelte
+│   │   │   │   ├── MobileMenu.svelte
+│   │   │   │   ├── PageLoader.svelte
+│   │   │   │   └── SearchModal.svelte
+│   │   │   ├── layout
 │   │   │   ├── sections
 │   │   │   ├── ui
 │   │   │   │   ├── ArticleCard.svelte
@@ -30,24 +32,15 @@
 │   │   │   │   ├── HeaderNew.svelteZAL
 │   │   │   │   ├── Header.svelte
 │   │   │   │   ├── Hero.svelte
-│   │   │   │   ├── Logo.svelte
-│   │   │   │   ├── MobileMenu.svelte
 │   │   │   │   ├── Navigation.svelte
 │   │   │   │   ├── Nav.svelte
 │   │   │   │   ├── SearchForm.svelte
-│   │   │   │   ├── SearchModal.svelte
 │   │   │   │   └── TailwindHero.svelte
 │   │   │   └── index.ts
 │   │   ├── composables
 │   │   │   └── index.ts
 │   │   ├── core
-│   │   │   ├── boot.ts
-│   │   │   ├── ComponentRegistry.ts
-│   │   │   └── islands.ts
-│   │   ├── pages
-│   │   │   ├── App.svelte
-│   │   │   ├── CoolIndex.svelte
-│   │   │   └── Welcome.svelte
+│   │   │   └── ComponentRegistry.ts
 │   │   ├── stores
 │   │   │   ├── app.store.ts
 │   │   │   ├── cart.store.ts
@@ -56,7 +49,7 @@
 │   │   │   └── user.store.ts
 │   │   ├── styles
 │   │   │   ├── app.css
-│   │   │   └── tailwind.css
+│   │   │   └── global.css
 │   │   ├── types
 │   │   │   ├── app.d.ts
 │   │   │   ├── global.d.ts
@@ -72,6 +65,7 @@
 │   │   │   └── validation.ts
 │   │   └── app.ts
 │   ├── package.json
+│   ├── pnpm-lock.yaml
 │   ├── svelte.config.js
 │   ├── tsconfig.json
 │   └── vite.config.js
@@ -177,6 +171,7 @@
 │   ├── layout
 │   │   └── default.html.twig
 │   └── partials
+│       ├── articles-list.html.twig
 │       └── components.twig
 ├── tests
 │   ├── Helper
@@ -189,8 +184,8 @@
 │   │   └── PingRequestHandlerTest.php
 │   ├── Unit
 │   │   ├── Collection
-│   │   │   ├── CollectionTest.php
-│   │   │   └── PetCollectionTest.php
+│   │   │   ├── ArticleCollectionTest.php
+│   │   │   └── CollectionTest.php
 │   │   ├── Dto
 │   │   │   ├── Collection
 │   │   │   │   ├── PetCollectionRequestTest.php
@@ -279,6 +274,7 @@
 ├── infection.json
 ├── LICENSE
 ├── openapi.yml
+├── petstore.tar
 ├── .phpactor.json
 ├── .php-cs-fixer.php
 ├── phpstan.neon
@@ -289,4 +285,4 @@
 ├── test-factory.php
 └── TODO.md
 
-85 directories, 205 files
+84 directories, 202 files

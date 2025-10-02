@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   
   let { isOpen, searchQuery, onClose, onSearch } = $props();
-  let searchInput = $state();
+  let searchInput = $state(); // ✅ Pridané $state
   
   function handleSubmit(event) {
     event.preventDefault();

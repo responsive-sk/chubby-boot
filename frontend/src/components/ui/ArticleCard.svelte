@@ -294,15 +294,6 @@
     }
   }
   
-  /* Loading state */
-  .article-card.loading {
-    pointer-events: none;
-  }
-  
-  .article-card.loading .card-content {
-    opacity: 0.6;
-  }
-  
   /* Focus styles for accessibility */
   .card-link:focus {
     outline: 2px solid var(--primary);

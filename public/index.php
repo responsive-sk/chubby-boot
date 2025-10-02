@@ -2,9 +2,15 @@
 
 declare(strict_types=1);
 
-use Slim\Psr7\Factory\ServerRequestFactory;
+use Laminas\Diactoros\ServerRequestFactory;
 
 /** @var Chubbyphp\Framework\Application $web */
 $env = getenv('APP_ENV') ?: 'dev';
 $web = (require __DIR__ . '/../src/web.php')($env);
-$web->emit($web->handle((new ServerRequestFactory())->createFromGlobals()));
+
+echo "=== DEBUG: Handling request ===\n";
+$request = ServerRequestFactory::fromGlobals();
+echo "=== DEBUG: Request URI: " . $request->getUri()->getPath() . " ===\n";
+
+$response = $web->handle($request);
+$web->emit($response);

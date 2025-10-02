@@ -1,25 +1,9 @@
+// app.ts
 import './styles/app.css';
-import { mount } from 'svelte';
-import Header from '$components/ui/Header.svelte';
+import './styles/global.css';
 import './core/ComponentRegistry';
 
-// Function to mount Header
-function mountHeader() {
-  const navRoot = document.getElementById('nav-root');
-  if (navRoot && !navRoot.hasChildNodes()) {
-    const urlParams = new URLSearchParams(window.location.search);
-    mount(Header, {
-      target: navRoot,
-      props: {
-        currentRoute: window.location.pathname || "/",
-        searchQuery: urlParams.get('q') || ""
-      }
-    });
-  }
-}
+// Import komponentov pre lepšie zbalenie
+import './components/index';
 
-// Mount Header initially
-mountHeader();
-
-// Re-mount Header after HTMX swaps
-document.body.addEventListener('htmx:afterSwap', mountHeader);
+console.log('Svelte app initialized');

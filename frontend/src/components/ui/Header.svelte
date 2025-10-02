@@ -40,6 +40,12 @@
     }
   }
   
+  function handleSearchKeydown(event) {
+    if (event.key === 'Escape') {
+      closeSearch()
+    }
+  }
+  
   onMount(() => {
     // Close mobile menu when clicking outside
     function handleClickOutside(event) {
@@ -58,21 +64,6 @@
 
 <header class="header svelte-component">
   <div class="container">
-    <!-- Logo -->
-<!--     <div class="logo-container">
-      <a href="/" class="logo-link">
-        <svg class="logo-svg" viewBox="0 0 255 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="10" y="20" width="60" height="60" fill="#b02425" rx="8"/>
-          <text x="80" y="45" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="600">
-            Boson
-          </text>
-          <text x="80" y="65" fill="rgba(255,255,255,0.6)" font-family="system-ui, -apple-system, sans-serif" font-size="12">
-            PHP Desktop
-          </text>
-        </svg>
-      </a>
-    </div> -->
-    
     <!-- Desktop Navigation -->
     <nav class="desktop-nav">
       {#each navigation as item}
@@ -94,7 +85,7 @@
         on:click={toggleSearch}
         aria-label="Toggle search"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <circle cx="11" cy="11" r="8"/>
           <path d="m21 21-4.35-4.35"/>
         </svg>
@@ -106,7 +97,7 @@
         on:click={toggleMobileMenu}
         aria-label="Toggle mobile menu"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           {#if mobileMenuOpen}
             <path d="M18 6L6 18M6 6l12 12"/>
           {:else}
@@ -119,7 +110,13 @@
   
   <!-- Mobile Navigation -->
   {#if mobileMenuOpen}
-    <div class="mobile-menu mobile-menu-container svelte-slide">
+    <div 
+      class="mobile-menu mobile-menu-container svelte-slide"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Mobile menu"
+      tabindex="0"
+    >
       <nav class="mobile-nav">
         {#each navigation as item}
           <a 
@@ -137,24 +134,37 @@
   
   <!-- Search Overlay -->
   {#if searchOpen}
-    <div class="search-overlay svelte-fade" on:click={closeSearch}>
-      <div class="search-modal" on:click|stopPropagation>
+    <div 
+      class="search-overlay svelte-fade" 
+      on:click={closeSearch}
+      on:keydown={handleSearchKeydown}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Search dialog"
+      tabindex="0"
+    >
+      <div class="search-modal" role="document">
         <form on:submit={handleSearchSubmit} class="search-form">
           <div class="search-input-container">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
               <circle cx="11" cy="11" r="8"/>
               <path d="m21 21-4.35-4.35"/>
             </svg>
-            <input 
+            <input
+              type="search"
+              name="q"
+              placeholder="Search articles..."
+              bind:value={searchQuery}
               bind:this={searchInput}
-              type="search" 
-              name="q" 
-              placeholder="Search articles, docs..." 
-              class="search-input"
-              value={searchQuery}
+              aria-label="Search input"
             />
-            <button type="button" on:click={closeSearch} class="search-close">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <button 
+              type="button" 
+              on:click={closeSearch} 
+              class="search-close"
+              aria-label="Close search"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M18 6L6 18M6 6l12 12"/>
               </svg>
             </button>
@@ -187,21 +197,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-  
-  .logo-container {
-    flex-shrink: 0;
-  }
-  
-  .logo-link {
-    display: block;
-    text-decoration: none;
-  }
-  
-  .logo-svg {
-    width: 180px;
-    height: 40px;
-    display: block;
   }
   
   .desktop-nav {
@@ -245,7 +240,7 @@
     border: none;
     color: rgba(255, 255, 255, 0.8);
     padding: 0.5rem;
-    border-radius: var(--radius);
+    border-radius: 0.5rem;
     cursor: pointer;
     transition: all 0.2s ease;
   }
@@ -310,8 +305,8 @@
   
   .search-modal {
     background: white;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 600px;
     margin: 0 2rem;
@@ -326,41 +321,28 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem 1.5rem;
-    border: 2px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--bg-primary);
+    border: 2px solid #e5e7eb;
+    border-radius: 0.375rem;
+    background: white;
     transition: border-color 0.2s ease;
   }
   
   .search-input-container:focus-within {
-    border-color: var(--primary);
-  }
-  
-  .search-input {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: 1.125rem;
-    background: transparent;
-    color: var(--text-primary);
-  }
-  
-  .search-input::placeholder {
-    color: var(--text-muted);
+    border-color: #2563eb;
   }
   
   .search-close {
     background: none;
     border: none;
-    color: var(--text-secondary);
+    color: #6b7280;
     cursor: pointer;
     padding: 0.25rem;
-    border-radius: var(--radius);
+    border-radius: 0.5rem;
     transition: color 0.2s ease;
   }
   
   .search-close:hover {
-    color: var(--text-primary);
+    color: #374151;
   }
   
   @media (max-width: 768px) {
@@ -374,11 +356,6 @@
     
     .container {
       padding: 0 1rem;
-    }
-    
-    .logo-svg {
-      width: 120px;
-      height: 30px;
     }
   }
 </style>
