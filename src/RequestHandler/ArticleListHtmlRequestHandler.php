@@ -35,7 +35,9 @@ final class ArticleListHtmlRequestHandler implements RequestHandlerInterface
         $offset = ($page - 1) * $limit;
 
         $articleCollection = new ArticleCollection();
-        $this->articleRepository->resolveCollection($articleCollection, $limit, $offset);
+        $articleCollection->setLimit($limit);
+        $articleCollection->setOffset($offset);
+        $this->articleRepository->resolveCollection($articleCollection);
         $articles = $articleCollection->getItems();
 
         return new HtmlResponse(
