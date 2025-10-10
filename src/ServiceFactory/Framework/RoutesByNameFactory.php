@@ -49,7 +49,7 @@ final class RoutesByNameFactory
                 Route::get('/', 'home', $homePage),
                 Route::get('/ping', 'ping', $ping),
                 Route::get('/openapi', 'openapi', $openApi),
-                Route::get('/articles/list', 'articleListHtml', $articleListHtml),
+                Route::get('/articles', 'articleListHtml', $articleListHtml),
                 Group::create('/api', [
                     Group::create('/articles', [
                         Route::get('', 'article_list', $articleList),

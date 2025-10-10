@@ -20,7 +20,7 @@ class EntityManagerFactory
         $config = $container->get('config')['doctrine'] ?? [];
 
         // Create ORM configuration first
-        $configuration = $this->createConfiguration($config['orm']['configuration'] ?? []);
+        $configuration = $this->createConfiguration($config);
         
         // Create event manager
         $eventManager = new EventManager();
@@ -52,9 +52,7 @@ class EntityManagerFactory
         $configuration = new Configuration();
 
         // Set up metadata driver
-        $driver = new AttributeDriver([
-            __DIR__.'/../../src/Model',
-        ]);
+        $driver = new AttributeDriver($config['driver']['attribute']['paths'] ?? [__DIR__.'/../../src/Model']);
         $configuration->setMetadataDriverImpl($driver);
 
         // Set up proxy configuration

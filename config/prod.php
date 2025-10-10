@@ -84,12 +84,11 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Mezzio\Twig\TwigRendererFactory;
 use Mezzio\Template\TemplateRendererInterface;
-
-$rootDir = \realpath(__DIR__ . '/..');
-$cacheDir = $rootDir . '/var/cache/';
+$rootDir = realpath(__DIR__ . '/..');
+$cacheDir = $rootDir . '/var/cache';
 $logDir = $rootDir . '/var/log';
 
-return [
+$config = [
     'chubbyphp' => [
         'cors' => [
             'allowCredentials' => false,
@@ -122,7 +121,7 @@ return [
             DecoderInterface::class => DecoderFactory::class,
             EncoderInterface::class => EncoderFactory::class,
             // Register EntityManager factory
-            EntityManagerInterface::class => [\App\ServiceFactory\Doctrine\EntityManagerFactory::class, 'create'],
+            EntityManagerInterface::class => \App\ServiceFactory\Doctrine\EntityManagerFactory::class,
             // Alias for backward compatibility
             'doctrine.entity_manager' => EntityManagerInterface::class,
             EntityManagerProvider::class => ContainerEntityManagerProviderFactory::class,
@@ -152,8 +151,8 @@ return [
             UrlGeneratorInterface::class => UrlGeneratorFactory::class,
             'twig' => TwigRendererFactory::class,
             'Twig\Environment' => function($container) {
-                $paths = $container->get('config')['templates']['paths'];
-                $loader = new \Twig\Loader\FilesystemLoader($paths);
+                $config = $container->get('config');
+                $loader = new \Twig\Loader\FilesystemLoader($config['templates']['paths']);
                 return new \Twig\Environment($loader);
             },
             \App\RequestHandler\HomePageRequestHandler::class => \App\ServiceFactory\RequestHandler\HomePageRequestHandlerFactory::class,
@@ -180,17 +179,17 @@ return [
             'attribute' => [
                 'class' => 'Doctrine\ORM\Mapping\Driver\AttributeDriver',
                 'paths' => [
-                    __DIR__ . '/../src/Model',
+                    $rootDir . '/src/Model',
                 ],
             ],
         ],
         'orm' => [
-            'configuration' => [
-                'autoGenerateProxyClasses' => false,
-                'proxyDir' => $cacheDir . '/doctrine/orm/proxies',
-                'proxyNamespace' => 'DoctrineORMProxy',
-                'metadataCache' => CacheItemPoolInterface::class,
-            ],
+        'configuration' => [
+            'autoGenerateProxyClasses' => false,
+            'proxyDir' => $cacheDir . '/doctrine/orm/proxies',
+            'proxyNamespace' => 'DoctrineORMProxy',
+            'metadataCache' => CacheItemPoolInterface::class,
+        ],
         ],
     ],
     'fastroute' => [
@@ -199,7 +198,7 @@ return [
     'monolog' => [
         'name' => 'petstore',
         'path' => $logDir . '/log',
-        'level' => Level::Notice,
+        'level' => \Monolog\Level::Notice,
     ],
     'templates' => [
         'paths' => [
@@ -207,3 +206,5 @@ return [
         ],
     ],
 ];
+
+return $config;

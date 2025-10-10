@@ -19,7 +19,7 @@ $config['dependencies']['factories']['App\Parsing\ArticleParsing'] = 'App\Servic
 $config['dependencies']['factories']['App\Repository\ArticleRepository'] = 'App\ServiceFactory\Repository\ArticleRepositoryFactory';
 
 // Use custom EntityManager factory
-$config['dependencies']['factories'][\Doctrine\ORM\EntityManagerInterface::class] = [\App\ServiceFactory\Doctrine\EntityManagerFactory::class, 'create'];
+$config['dependencies']['factories'][\Doctrine\ORM\EntityManagerInterface::class] = \App\ServiceFactory\Doctrine\EntityManagerFactory::class;
 
 // Alias for backward compatibility
 $config['dependencies']['aliases']['doctrine.entity_manager'] = \Doctrine\ORM\EntityManagerInterface::class;

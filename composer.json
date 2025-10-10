@@ -31,6 +31,7 @@
         "mezzio/mezzio-twigrenderer": "^2.17",
         "monolog/monolog": "^3.9",
         "ramsey/uuid": "^4.9",
+        "responsive-sk/slim4-paths": "^6.0",
         "symfony/console": "^7.3.2"
     },
     "require-dev": {
