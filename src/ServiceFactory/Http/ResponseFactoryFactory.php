@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\ServiceFactory\Http;
 
-use Slim\Psr7\Factory\ResponseFactory;
+use Laminas\Diactoros\ResponseFactory;
 
 final class ResponseFactoryFactory
 {

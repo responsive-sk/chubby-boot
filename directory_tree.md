@@ -4,10 +4,15 @@
 │   ├── insert-test-article.php
 │   └── insert-test-data.php
 ├── config
+│   ├── routes
+│   │   ├── api.php
+│   │   └── web.php
 │   ├── container.php
+│   ├── container_simple.php
 │   ├── dev.php
 │   ├── phpunit.php
-│   └── prod.php
+│   ├── prod.php
+│   └── routes.php
 ├── database
 │   └── database.sqlite
 ├── frontend
@@ -265,11 +270,14 @@
 │   └── articlestore.db
 ├── composer.json
 ├── composer.lock
+├── debug_routematcher.php
+├── debug_routes.php
 ├── DEPLOYMENT.md
 ├── directory_tree.md
 ├── docker-compose.ci.yml
 ├── docker-compose.yml
 ├── .dockerignore
+├── find_routes.php
 ├── .gitignore
 ├── infection.json
 ├── LICENSE
@@ -285,4 +293,4 @@
 ├── test-factory.php
 └── TODO.md
 
-84 directories, 202 files
+85 directories, 209 files
