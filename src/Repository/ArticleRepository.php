@@ -35,6 +35,7 @@ final class ArticleRepository implements RepositoryInterface
         $entityRepository = $this->entityManager->getRepository(Article::class);
 
         $queryBuilder = $entityRepository->createQueryBuilder('a');
+        $queryBuilder->leftJoin('a.category', 'c')->addSelect('c');
 
         $filters = $articleCollection->getFilters();
 
